@@ -7,7 +7,14 @@ authors:
 targets:
   joobq_gui:
     main: src/joobq_gui.cr
+  start:
+    main: src/start.cr
 
 crystal: 0.35.1
 
 license: MIT
+
+dependencies: 
+  azu:
+    github: eliasjpr/azu
+    branch: enable-type-safe-request-response
