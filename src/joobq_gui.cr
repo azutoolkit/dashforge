@@ -1,6 +1,17 @@
-# TODO: Write documentation for `JoobqGui`
-module JoobqGui
-  VERSION = "0.1.0"
+require "azu"
+require "mime"
+require "kilt"
+require "kilt/slang"
 
-  # TODO: Put your code here
+require "./requests/**"
+require "./responses/**"
+require "./handlers/**"
+require "./endpoints/**"
+require "./configuration"
+require "./pipelines"
+require "./routes"
+
+module JoobqGui
+  include Azu
+  VERSION = "0.1.0"
 end
