@@ -10,6 +10,9 @@ JoobqGui.router do
   end
 
   get "/busy", Queues::BusyEndpoint, :web
+  get "/completed", Queues::BusyEndpoint, :web
+  get "/failed", Queues::FailedEndpoint, :web
+  get "/dead", Queues::DeadEndpoint, :web
 
   routes :static do
     get "/*", Static
