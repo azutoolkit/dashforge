@@ -1,0 +1,54 @@
+{% extends "layout.jinja" %}
+
+{% block styles %}
+<link href="/assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link href="/assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/dashforge.css">
+<link rel="stylesheet" href="/assets/css/dashforge.dashboard.css">
+{% endblock  %}
+
+{% block page_body %}
+<div class="row row-xs">
+  <div class="col-lg-8">
+    {% include 'dashboard/partials/current_jobs_status.jinja.html' %}
+    <div class="row row-xs mg-t-10">
+      <div class="col mg-t-10 mg-md-t-0">
+      {% include 'queues/partials/queue_table.jinja.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4 mg-t-10 mg-lg-t-0">
+    <div class="row row-xs">
+      <div class="col-12 col-md-6 col-lg-12">
+        {% include 'dashboard/partials/jobs_latency.jinja.html' %}
+      </div>
+      <div class="col-12 col-md-6 col-lg-12 mg-t-10">
+        {% include 'dashboard/partials/jobs_received.jinja.html' %}
+      </div>
+      <div class="col-12 col-md-6 col-lg-12 mg-t-10">
+        {% include 'dashboard/partials/jobs_satisfaction.jinja.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script_footer %}
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="/assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/feather-icons/feather.min.js"></script>
+<script src="/assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.stack.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="/assets/lib/flot.curvedlines/curvedLines.js"></script>
+<script src="/assets/lib/peity/jquery.peity.min.js"></script>
+<script src="/assets/lib/chart.js/Chart.bundle.min.js"></script>
+
+<script src="/assets/js/dashforge.js"></script>
+<script src="/assets/js/dashforge.sampledata.js"></script>
+<script src="/assets/js/dashboard-four.js"></script>
+
+<!-- append theme customizer -->
+<script src="/assets/lib/js-cookie/js.cookie.js"></script>
+{% endblock  %}
