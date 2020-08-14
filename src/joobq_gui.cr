@@ -1,8 +1,9 @@
 require "azu"
 require "mime"
-require "kilt"
-require "kilt/slang"
+require "joobq"
 
+require "./jobs/*"
+require "./config/**"
 require "./requests/**"
 require "./responses/**"
 require "./handlers/**"
