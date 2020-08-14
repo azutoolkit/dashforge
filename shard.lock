@@ -8,23 +8,31 @@ shards:
     git: https://github.com/straight-shoota/crinja.git
     version: 0.6.1
 
+  cron_parser:
+    git: https://github.com/kostya/cron_parser.git
+    version: 0.3.0
+
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
     version: 0.1.4
 
-  kilt:
-    git: https://github.com/jeromegn/kilt.git
-    version: 0.6.0
+  joobq:
+    git: https://github.com/eliasjpr/joobq.git
+    version: 0.1.0+git.commit.17f202f2c38b55139f09d6377533a8dae5bf42a6
+
+  pool:
+    git: https://github.com/ysbaddaden/pool.git
+    version: 0.2.3
 
   radix:
     git: https://github.com/luislavena/radix.git
     version: 0.3.9
 
+  redis:
+    git: https://github.com/stefanwille/crystal-redis.git
+    version: 2.6.0
+
   schema:
     git: https://github.com/eliasjpr/schema.git
     version: 0.1.0+git.commit.e2bb39b2d2ce5c4c214f5fb4bdf87d4379dafc87
-
-  slang:
-    git: https://github.com/jeromegn/slang.git
-    version: 1.7.1
 
