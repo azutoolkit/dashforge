@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  redis:
+    image: redislabs/redistimeseries
+    ports:
+      - "6379:6379"
+
+  web:
+    build: 
+      context: .
+      dockerfile: Dockerfile.web
+    command: ./start
+    working_dir: /root/
+    environment:
+        CRYSTAL_ENV: development
+        HOST: 0.0.0.0
+        PORT: 4000
+        REDIS_HOST: redis
+        REDIS_PORT: 6379
+        REDIS_POOL_SIZE: 100
+        REDIS_TIMEOUT: 0.5
+    ports:
+        - "4000:4000"
+    depends_on:
+        - redis
+  
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    command: ./worker
+    working_dir: /root/
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_POOL_SIZE: 100
+      REDIS_TIMEOUT: 0.5
+    depends_on:
+        - redis
+  
