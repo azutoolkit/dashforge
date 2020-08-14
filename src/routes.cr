@@ -13,6 +13,7 @@ JoobqGui.router do
   get "/completed", Queues::BusyEndpoint, :web
   get "/failed", Queues::FailedEndpoint, :web
   get "/dead", Queues::DeadEndpoint, :web
+  get "/jobs", Jobs::IndexEndpoint, :web
 
   routes :static do
     get "/*", Static
