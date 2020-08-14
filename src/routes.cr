@@ -5,7 +5,7 @@ JoobqGui.router do
     get "/", Dashboard::IndexEndpoint
   end
 
-  routes :web, "/queues"do
+  routes :web, "/queues" do
     get "/", Queues::IndexEndpoint
   end
 

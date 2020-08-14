@@ -1,3 +1,4 @@
+{% import "dashboard/macros/queue_progress.jinja" %}
 <div class="card">
   <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
     <div class="mg-b-10 mg-sm-b-0">
@@ -7,51 +8,16 @@
   </div>
   <div class="card-body">
     <div class="chart-fifteen">
-      <div id="flotChart1" class="flot-chart"></div>
+      <canvas id="running-jobs" data-chart="{}"></canvas>
     </div>
   </div>
   <div class="card-footer pd-y-15 pd-x-20">
     <div class="row row-sm">
-      <div class="col-6 col-sm-4 col-md-3 col-lg">
-        <h4 class="tx-normal tx-rubik mg-b-10">156</h4>
-        <div class="progress ht-2 mg-b-10">
-          <div class="progress-bar wd-100p bg-df-2 bg-primary" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2 text-primary">Total</h6>
-      </div>
-      <div class="col-6 col-sm-4 col-md-3 col-lg">
-        <h4 class="tx-normal tx-rubik mg-b-10">86</h4>
-        <div class="progress ht-2 mg-b-10">
-          <div class="progress-bar wd-85p bg-df-2 bg-info" role="progressbar" aria-valuenow="85" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2 text-info">Busy</h6>
-      </div>
-      <div class="col-6 col-sm-4 col-md-3 col-lg mg-t-20 mg-sm-t-0">
-        <h4 class="tx-normal tx-rubik mg-b-10">27</h4>
-        <div class="progress ht-2 mg-b-10">
-          <div class="progress-bar wd-25p bg-df-2 bg-warning" role="progressbar" aria-valuenow="25" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2 text-warning">Failed</h6>
-      </div>
-      <div class="col-6 col-sm-4 col-md-3 col-lg mg-t-20 mg-md-t-0">
-        <h4 class="tx-normal tx-rubik mg-b-10">45</h4>
-        <div class="progress ht-2 mg-b-10">
-          <div class="progress-bar wd-45p bg-df-2 bg-success" role="progressbar" aria-valuenow="45" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2 text-success">Completed</h6>
-      </div>
-      <div class="col-6 col-sm-4 col-md-3 col-lg mg-t-20 mg-lg-t-0">
-        <h4 class="tx-normal tx-rubik mg-b-10">30</h4>
-        <div class="progress ht-2 mg-b-10">
-          <div class="progress-bar wd-30p bg-df-2 bg-danger" role="progressbar" aria-valuenow="30" aria-valuemin="0"
-            aria-valuemax="100"></div>
-        </div>
-        <h6 class="tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2  text-danger">Dead</h6>
-      </div>
+      {{ queue_progress("Total", "primary", counts.total, 100) }}
+      {{ queue_progress("Completed", "success", counts.completed, counts.completed_percent) }}
+      {{ queue_progress("Retry", "info", counts.retry, counts.retry_percent) }}
+      {{ queue_progress("Failed", "warning", counts.failed, counts.failed_percent) }}
+      {{ queue_progress("Dead", "danger", counts.dead, counts.dead_percent) }}
     </div>
   </div>
 </div>

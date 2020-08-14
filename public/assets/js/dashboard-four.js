@@ -1,6 +1,64 @@
 $(function(){
   'use strict'
 
+   // Activity Chars - Tracks Total, busy, and failed jobs
+   var ctxLabel = ['6am', '10am', '1pm', '4pm', '7pm', '10pm'];
+   var ctxData1 = [20, 60, 50, 45, 50, 60];
+   var ctxData2 = [10, 40, 30, 40, 55, 25];
+   var ctxColor1 = '#65e0e0';
+   var ctxColor2 = '#69b2f8'
+
+   var ctx5 = document.getElementById('running-jobs');
+   new Chart(ctx5, {
+     type: 'line',
+     data: {
+       labels: ctxLabel,
+       datasets: [{
+         data: ctxData1,
+         borderColor: ctxColor1,
+         borderWidth: 1,
+         backgroundColor: 'rgba(0,23,55, .5)'
+       },{
+         data: ctxData2,
+         borderColor: ctxColor2,
+         borderWidth: 1,
+         backgroundColor: 'rgba(28,225,172, .5)'
+       }]
+     },
+     options: {
+       maintainAspectRatio: false,
+       legend: {
+         display: false,
+           labels: {
+             display: false
+           }
+       },
+       scales: {
+         yAxes: [{
+           stacked: true,
+           gridLines: {
+             color: '#e5e9f2'
+           },
+           ticks: {
+             beginAtZero:true,
+             fontSize: 10
+           }
+         }],
+         xAxes: [{
+           stacked: true,
+           gridLines: {
+             display: false
+           },
+           ticks: {
+             beginAtZero:true,
+             fontSize: 11
+           }
+         }]
+       }
+     }
+   });
+ 
+
   $.plot('#flotChart1', [{
     data: df2,
     color: '#65e0e0'

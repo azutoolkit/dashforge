@@ -10,10 +10,10 @@
 {% block page_body %}
 <div class="row row-xs">
   <div class="col-lg-8">
-    {% include 'dashboard/partials/current_jobs_status.jinja.html' %}
+    {{ activity_chart }}
     <div class="row row-xs mg-t-10">
       <div class="col mg-t-10 mg-md-t-0">
-      {% include 'queues/partials/queue_table.jinja.html' %}
+      {{ queue_table }}
       </div>
     </div>
   </div>
