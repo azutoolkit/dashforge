@@ -27,19 +27,27 @@ class QueueService
       percent = q.size.zero? ? 0 : ((q.size/total) * 100).to_i
       result[q.name] = {percent: percent, count: q.size.to_i}
     end
+
     result
   end
 
-  def running
-    source = [] of NamedTuple(type: String, smooth: Bool, name: String, data: Array(Array(String | Int32)))
+  def processing
+    source = [] of NamedTuple(name: String, label: Array(String), data: Array(Int32))
 
-    queues.sort.map do |name|
-      data = processing_count(name).not_nil!.map do |item|
+    joobq.queues.keys.sort.map do |name|
+      label = [] of String
+      data = [] of Int32
+
+      processing_count(name).not_nil!.each do |item|
         ts, value = item.as(Array)
-        [Time.unix_ms(ts.as(Int64)).to_rfc3339, value.as(String).to_i]
+        label << Time.unix_ms(ts.as(Int64)).to_rfc3339
+        data << value.as(String).to_i
       end
-      source << {type: "line", smooth: true, name: name, data: data}
+
+      source << {name: name, label: label, data: data}
     end
+
+    source
   end
 
   def processing_count(name)

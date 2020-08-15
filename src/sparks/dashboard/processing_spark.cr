@@ -1,9 +1,9 @@
 module Dashboard
-  class ActivityChartSpark < Azu::SparkView
+  class ProcessingSpark < Azu::SparkView
     include Azu::Html
     getter queue : QueueService = QueueService.instance
 
-    TEMPLATE = "dashboard/partials/current_jobs_status.jinja.html"
+    TEMPLATE = "dashboard/partials/processing.jinja.html"
 
     def mount
       every(3.seconds) { refresh }
@@ -14,7 +14,7 @@ module Dashboard
     end
   
     def html
-      render TEMPLATE, {"counts" => queue.counts}
+      render TEMPLATE, { "counts" => queue.counts, "chart" =>  { data: queue.processing }.to_json }
     end
   end
 end

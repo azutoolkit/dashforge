@@ -6,7 +6,7 @@ module Dashboard
     def html
       render "dashboard/index.jinja", {
         "counts" => queue.counts,
-        "activity_chart" =>  ActivityChartSpark.new.to_s(IO::Memory.new).to_s,
+        "activity_chart" =>  ProcessingSpark.new.to_s(IO::Memory.new).to_s,
         "queue_table" => QueueTableSpark.new.to_s(IO::Memory.new).to_s
       }
     end
