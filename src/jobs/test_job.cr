@@ -9,6 +9,5 @@ struct TestJob
   end
 
   def perform
-    sleep rand(2).milliseconds
   end
 end

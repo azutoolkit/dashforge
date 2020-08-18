@@ -1,5 +1,12 @@
 require "joobq"
 require "./src/jobs/**"
 require "./src/config/**"
+require "colorize"
 
-JoobQ.forge
+spawn do
+  loop do
+    JoobQ.forge
+  end
+end
+
+sleep

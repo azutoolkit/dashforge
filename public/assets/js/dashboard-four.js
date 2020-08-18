@@ -8,75 +8,56 @@ $(function () {
   var ctxColor1 = '#65e0e0';
   var ctxColor2 = '#69b2f8'
 
-  var ctx5 = document.getElementById('running-jobs');
-  var data = $("#running-jobs").data("chart")["data"]
+  var ctx5 = document.getElementById('processing-chart');
+  var data = $(ctx5).data("chart")["data"]
 
-  new Chart(ctx5, {
+  const processingOptions =  {
     type: 'bar',
     data: {
-      labels: data[0].label,
-      datasets: [{
-        label: data[0].name,
-        data: data[0].data,
-      }, {
-        label: data[1].name,
-        data: data[1].data,
-      }, {
-        label: data[2].name,
-        data: data[2].data,
-      }]
+      datasets: data,
     },
     options: {
-      plugins: {
-        colorschemes: {
-          scheme: 'tableau.Tableau20'
-        }
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      legend: {
-        display: true,
-        labels: {
-          display: false
-        }
+      animation: {
+        duration: 0
       },
       scales: {
-        yAxes: [{
+        xAxes: [{
           stacked: true,
-          gridLines: {
-            color: '#e5e9f2'
-          },
+          type: 'time',
+          time: {
+            displayFormats: {
+              quarter: 'h:mm a'
+            },
+            unit: 'minute',
+         },
+          distribution: 'series',
+          offset: true,
           ticks: {
-            beginAtZero: true,
-            fontSize: 10
+            major: {
+              enabled: true,
+              fontStyle: 'bold'
+            },
+            source: 'data',
+            autoSkip: true,
+            autoSkipPadding: 100,
+            maxRotation: 0,
+            sampleSize: 100,
+            gridLines: false
           }
         }],
-          xAxes: [{
-            stacked: true,
+        yAxes: [{
           gridLines: {
-            display: false
+            drawBorder: false
           },
-          type: 'time',
-          bounds: 'data',
-          distribution: 'series',
-          time: {
-            unit: 'second',
-            displayFormats: {
-              quarter: 'MMM YYYY'
-            }
-          },
-          ticks: {
-            display: false,
-            source: 'labels',
-            maxTicksLimit: 3,
-            beginAtZero: false,
-            fontSize: 11
+          scaleLabel: {
+            display: true,
           }
         }]
       }
     }
-  });
+  };
 
+  window.processingChart = new Chart(ctx5, processingOptions);
 
   $.plot('#flotChart1', [{
     data: df2,

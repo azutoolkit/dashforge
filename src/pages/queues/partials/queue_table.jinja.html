@@ -10,23 +10,19 @@
         <tr>
           <th class="text-dark">Status</th>
           <th class="text-dark">Name</th>
-          <th class="text-right text-dark">No. Workers</th>
           <th class="text-right text-dark">Jobs</th>
-          <th class="text-right text-dark">No. Of Jobs</th>
-          <th class="text-right text-dark">Status</th>
-          <th class="text-right text-dark">Active Workers</th>
+          <th class="text-right text-dark">No. Workers</th>
+          <th class="text-right text-dark">Queued Jobs</th>
         </tr>
       </thead>
       <tbody> 
       {% for queue in queues %}
         <tr>
-          <td class="tx-color-03 tx-normal">{{queue.status}}</td>
+          <td class="tx-color-03 tx-normal tx-danger">{{queue.status}}</td>
           <td class="tx-color-03 tx-normal">{{queue.name}}</td>
+          <td class="text-right">{{queue.jobs}}</td>
           <td class="tx-medium text-right">{{queue.total_workers}}</td>
-          <td class="text-right tx-teal">{{queue.jobs}}</td>
-          <td class="text-right tx-teal">{{queue.size}}</td>
-          <td class="text-right tx-pink">{{queue.status}}</td>
-          <td class="tx-medium text-right">{{queue.running_workers}}</td>
+          <td class="text-right">{{queue.size}}</td>
         </tr>
       {% endfor %}
       </tbody>

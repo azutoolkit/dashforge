@@ -1,16 +1,27 @@
 {% extends "layout.jinja" %}
 
 {% block styles %}
-<link href="/assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-<link href="/assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/dashforge.css">
 <link rel="stylesheet" href="/assets/css/dashforge.dashboard.css">
 {% endblock  %}
 
 {% block page_body %}
 <div class="row row-xs">
   <div class="col-lg-8">
-    {{ activity_chart }}
+    <div class="card">
+      <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
+        <div class="mg-b-10 mg-sm-b-0">
+          <h6 class="mg-b-5">Activity</h6>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="chart-fifteen">
+          <canvas id="processing-chart" style="height: 350px;" data-chart='{{processing_chart_data}}'></canvas>
+        </div>
+      </div>
+          
+      {{ processing_status }}
+    </div>
+
     <div class="row row-xs mg-t-10">
       <div class="col mg-t-10 mg-md-t-0">
       {{ queue_table }}
@@ -45,10 +56,10 @@
 <script src="/assets/lib/peity/jquery.peity.min.js"></script>
 <script src="/assets/lib/chart.js/Chart.bundle.min.js"></script>
 <script src="/assets/lib/colorschemes/chartjs-plugin-colorschemes.min.js"></script>
-
 <script src="/assets/js/dashforge.js"></script>
 <script src="/assets/js/dashforge.sampledata.js"></script>
 <script src="/assets/js/dashboard-four.js"></script>
+<script src="/assets/js/charts-update.js"></script>
 
 <!-- append theme customizer -->
 <script src="/assets/lib/js-cookie/js.cookie.js"></script>

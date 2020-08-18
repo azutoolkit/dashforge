@@ -31,33 +31,28 @@ class QueueService
     result
   end
 
-  def processing
-    source = [] of NamedTuple(name: String, label: Array(String), data: Array(Int32))
+  def processing(since, count = 100)
+    source = [] of NamedTuple(label: String, data: Array(NamedTuple(t: String, y: Int32)))
 
     joobq.queues.keys.sort.map do |name|
-      label = [] of String
-      data = [] of Int32
-
-      processing_count(name).not_nil!.each do |item|
+      data = processing_count(name, since, count).not_nil!.map do |item|
         ts, value = item.as(Array)
-        label << Time.unix_ms(ts.as(Int64)).to_rfc3339
-        data << value.as(String).to_i
+        {t: Time.unix_ms(ts.as(Int64)).to_rfc3339, y: value.as(String).to_i}
       end
-
-      source << {name: name, label: label, data: data}
+      source << { label: name, data: data}
     end
 
     source
   end
 
-  def processing_count(name)
+  def processing_count(name, since, count = 100)
     joobq.query(
-      from: 3.hour.ago.to_unix_ms,
+      from: since.to_unix_ms,
       to: Time.local.to_unix_ms,
       filters: "name=#{name}",
       aggr: "count",
       group_by: 1000,
-      count: 100)
+      count: count)
   end
 
   def latency(name : String)

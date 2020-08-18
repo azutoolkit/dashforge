@@ -1,5 +1,7 @@
 JoobqGui.router do
   root :web, Dashboard::IndexEndpoint
+  ws "/live-view", Azu::Spark
+  ws "/charts-data", ChartsChannel
 
   routes :web, "/dashboard" do
     get "/", Dashboard::IndexEndpoint

@@ -1,10 +1,11 @@
-class DataChannel < Azu::Channel
+class ChartsChannel < Azu::Channel
   getter queue : QueueService = QueueService.instance
 
   def on_connect
     spawn do
       loop do
-        sleep rand(10).seconds
+        sleep 1.seconds
+        data = { data: queue.processing(30.minutes.ago) }.to_json
         socket.send data
       end
     end
