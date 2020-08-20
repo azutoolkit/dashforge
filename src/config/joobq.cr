@@ -1,6 +1,3 @@
-
-ENV["REDIS_POOL_SIZE"] = "300"
-
 module JoobQ  
   QUEUES = {
     "Email" => JoobQ::Queue(EmailJob).new("Email", 300),

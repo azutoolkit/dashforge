@@ -14,4 +14,4 @@ dependencies:
     github: eliasjpr/azu
     branch: enable-type-safe-request-response
   joobq:
-    github: eliasjpr/joobq
+    path: ../joobq
