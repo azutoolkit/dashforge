@@ -9,7 +9,6 @@ $(document).ready(function(){
   function addData(chart, data) {
     chart.data.datasets = data;
     chart.update({
-      duration: 800,
       easing: 'easeOutBounce'
     });
   }
@@ -17,7 +16,6 @@ $(document).ready(function(){
   ws.addEventListener('message', event => {
     var data = event.data;
     var { data } = JSON.parse(data);
-    console.log(data)
     addData(window.processingChart, data);
   });
 });

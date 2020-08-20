@@ -22,26 +22,25 @@ $(function () {
       },
       scales: {
         xAxes: [{
-          stacked: true,
           type: 'time',
+          distribution: 'series',
           time: {
             displayFormats: {
-              quarter: 'h:mm a'
+              quarter: 'mm:ss a'
             },
-            unit: 'minute',
          },
-          distribution: 'series',
-          offset: true,
+          offset: false,
           ticks: {
             major: {
               enabled: true,
               fontStyle: 'bold'
             },
+            beginAtZero:true,
             source: 'data',
             autoSkip: true,
-            autoSkipPadding: 100,
+            autoSkipPadding: 10,
             maxRotation: 0,
-            sampleSize: 100,
+            sampleSize: 10,
             gridLines: false
           }
         }],
@@ -50,8 +49,8 @@ $(function () {
             drawBorder: false
           },
           scaleLabel: {
-            display: true,
-          }
+            display: false,
+          },
         }]
       }
     }
