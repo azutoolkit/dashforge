@@ -31,11 +31,10 @@ class QueueService
     result
   end
 
-  def processing(since, count = 100)
+  def processing(label, since, count = 100)
     source = [] of NamedTuple(label: String, data: Array(NamedTuple(t: String, y: Int32)))
-    name = "stats=stats"
     
-    data = processing_count(name, since, count).not_nil!.map do |item|
+    data = processing_count(label, since, count).not_nil!.map do |item|
       ts, value = item.as(Array)
       {t: Time.unix_ms(ts.as(Int64)).to_rfc3339, y: value.as(String).to_i}
     end
