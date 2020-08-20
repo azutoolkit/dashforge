@@ -4,8 +4,8 @@ class ChartsChannel < Azu::Channel
   def on_connect
     spawn do
       loop do
-        sleep 1.seconds
-        data = { data: queue.processing(30.minutes.ago) }.to_json
+        sleep 5.seconds
+        data = { data: queue.processing(10.minutes.ago) }.to_json
         socket.send data
       end
     end
