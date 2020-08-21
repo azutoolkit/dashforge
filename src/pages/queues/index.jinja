@@ -10,7 +10,7 @@
 {% block page_body %}
 <div class="row">
   <div class="col col-3">
-    {% include 'dashboard/partials/jobs_satisfaction.jinja.html' %}
+    {{queue_overview}}
   </div>
   <div class="col col-9">
     <div class="row row-xs">
@@ -18,7 +18,7 @@
         {% include 'queues/partials/total_jobs.jinja.html' %}
       </div>
       <div class="col-lg">
-        {% include 'queues/partials/errors.jinja.html' %}
+        {{ errors_chart }}
       </div>
       <div class="col-lg">
         {% include 'queues/partials/latency.jinja.html' %}
@@ -30,7 +30,7 @@
         {% include 'queues/partials/queue_table.jinja.html' %}
       </div>
     </div>
-      </div>
+  </div>
 </div>
 {% endblock %}
 

@@ -11,7 +11,6 @@ targets:
     main: src/start.cr
 dependencies: 
   azu:
-    github: eliasjpr/azu
-    branch: enable-type-safe-request-response
+    path: ../azu
   joobq:
     path: ../joobq

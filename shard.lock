@@ -1,8 +1,8 @@
 version: 2.0
 shards:
   azu:
-    git: https://github.com/eliasjpr/azu.git
-    version: 0.1.0+git.commit.da5556bf49dc7c50fcfaaf05f196cf2531f6ff6f
+    path: ../azu
+    version: 0.1.0
 
   crinja:
     git: https://github.com/straight-shoota/crinja.git

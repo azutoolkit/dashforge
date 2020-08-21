@@ -8,14 +8,8 @@ JoobqGui.router do
   end
 
   routes :web, "/queues" do
-    get "/", Queues::IndexEndpoint
+    get "/:name", Queues::IndexEndpoint
   end
-
-  get "/busy", Queues::BusyEndpoint, :web
-  get "/completed", Queues::BusyEndpoint, :web
-  get "/failed", Queues::FailedEndpoint, :web
-  get "/dead", Queues::DeadEndpoint, :web
-  get "/jobs", Jobs::IndexEndpoint, :web
 
   routes :static do
     get "/*", Static
