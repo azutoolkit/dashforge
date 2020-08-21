@@ -44,24 +44,24 @@ class QueueService
     source
   end
 
-  def processing_count(filter, since, count = 1)
+  def processing_count(filter : Array(String), since = 1.hour.ago, count = 1)
     joobq.query(
       from: since.to_unix_ms,
       to: Time.local.to_unix_ms,
       filters: filter,
       aggr: "count",
-      group_by: 1000,
+      group_by: 60000,
       count: count)
   end
 
-  def latency(name : String)
+  def latency(filter : Array(String), since = 1.hour.ago, count = 1)
     joobq.query(
-      from: 1.hour.ago.to_unix_ms,
+      from: since.to_unix_ms,
       to: Time.local.to_unix_ms,
-      filters: "name=#{name}",
+      filters: filter,
       aggr: "avg",
       group_by: 1,
-      count: 1).first.as(Array).last.as(String).to_f
+      count: count).first.as(Array).last.as(String).to_f
   end
 
   def all

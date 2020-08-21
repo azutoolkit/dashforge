@@ -6,16 +6,20 @@ module Queues
     end
 
     def html
-      p @name
+      render "queues/index.jinja", {
+        "errors_spark" => Queues::ErrorsSpark.new(@name).to_s(IO::Memory.new).to_s
+      }
     end
 
     def xml
     end
 
     def text
+      "TEXT"
     end
 
     def json
+      { json: true }.to_json
     end
   end
 end

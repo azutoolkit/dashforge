@@ -7,7 +7,7 @@ struct FailJob
   end
 
   def perform
-    raise Exception.new if rand(9) == 3
+    raise Exception.new if rand(2) == 1
     sleep rand(5).milliseconds
   end
 end
