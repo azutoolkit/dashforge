@@ -58,8 +58,7 @@ $(function(){
     with: '100%',
     barWidth: 6,
     height: 70,
-    barColor: '#dc3545',
-    tooltipContainer: $('.az-content')
+    barColor: '#dc3545'
   });
 
   $('#sparkline6').sparkline('html', {

@@ -1,7 +1,7 @@
 module Dashboard
   class QueueTableSpark < Azu::SparkView
     include Azu::Html
-    getter queue : QueueService = QueueService.instance
+    getter joobq = JoobQ.statistics
     
     TEMPLATE = "queues/partials/queue_table.jinja.html"
 
@@ -14,7 +14,7 @@ module Dashboard
     end
   
     def html
-      render TEMPLATE, {"queues" => queue.queues}
+      render TEMPLATE, {"queues" => joobq.queues_details }
     end
   end
 end

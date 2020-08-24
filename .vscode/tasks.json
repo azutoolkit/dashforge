@@ -6,7 +6,7 @@
     {
       "label": "Build project",
       "type": "shell",
-      "command": "shards build start && ./bin/start",
+      "command": "shards build start --error-trace && ./bin/start",
       "group": {
         "kind": "build",
         "isDefault": true

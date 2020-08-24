@@ -7,7 +7,8 @@ module Queues
 
     def html
       render "queues/index.jinja", {
-        "errors_spark" => Queues::ErrorsSpark.new(@name).to_s(IO::Memory.new).to_s
+        "errors_spark" => Queues::ErrorsSpark.new(@name).to_s(IO::Memory.new).to_s,
+        "latency_spark" => Queues::LatencySpark.new(@name).to_s(IO::Memory.new).to_s
       }
     end
 

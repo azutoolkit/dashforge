@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   redis:
-    image: redislabs/redistimeseries
+    image: redislabs/redistimeseries:1.4.3
     ports:
       - "6379:6379"
 

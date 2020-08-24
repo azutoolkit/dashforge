@@ -1,16 +1,13 @@
 module Queues
   class ErrorsSpark < Azu::SparkView
     include Azu::Html
-    getter queue : QueueService = QueueService.instance
     getter joobq = JoobQ.statistics
-    
-    TEMPLATE = "queues/partials/errors.jinja.html"
     getter start_time : Int64
-    getter end_time : Int64
 
+    TEMPLATE = "queues/partials/errors.jinja.html"
+    
     def initialize(@name : String)
-      @start_time = 15.minutes.ago.to_unix_ms
-      @end_time = Time.local.to_unix_ms
+      @start_time = 0
     end
     
     def mount
@@ -22,31 +19,20 @@ module Queues
     end
   
     def html
-      p errors_list
       render TEMPLATE, {
         "errors_count" => total_errors,
-        "errors_list" => errors_list.join(",")
+        "errors_list" => errors_series.join(",")
       }
     end
 
     private def total_errors
-      joobq.query(
-        from: start_time,
-        to: end_time,
-        filters: ["name=Fail","status=error"],
-        aggr: "count",
-        group_by: 6000,
-        count: 1).as(Array(Redis::RedisValue))[0].as(Array(Redis::RedisValue)).last
+      joobq.range("#{@name}:error", count: 1, group: 900000).first.as(Array).last
     end
 
-    private def errors_list
-      joobq.query(
-        from: start_time,
-        to: end_time,
-        filters: ["name=Fail","status=error"],
-        aggr: "count",
-        group_by: 60000,
-        count: 100).as(Array(Redis::RedisValue)).map do |item| item.as(Array(Redis::RedisValue)).last end
+    private def errors_series
+      joobq.range("#{@name}:error", start_time, count: 38).map do |item|
+        item.as(Array).last.as(String)
+      end
     end
   end
 end

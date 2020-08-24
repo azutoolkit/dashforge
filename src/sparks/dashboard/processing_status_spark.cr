@@ -1,7 +1,7 @@
 module Dashboard
   class ProcessingStatusSpark < Azu::SparkView
     include Azu::Html
-    getter queue : QueueService = QueueService.instance
+    getter joobq = JoobQ.statistics
 
     TEMPLATE = "dashboard/partials/processing_status.jinja.html"
 
@@ -14,7 +14,11 @@ module Dashboard
     end
   
     def html
-      render TEMPLATE, { "counts" => queue.counts }
+      render TEMPLATE, { "counts" => counts }
+    end
+
+    private def counts
+      joobq.totals
     end
   end
 end

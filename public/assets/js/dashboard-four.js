@@ -9,10 +9,11 @@ $(function () {
   var ctxColor2 = '#69b2f8'
 
   var ctx5 = document.getElementById('processing-chart');
-  var data = $(ctx5).data("chart")["data"]
-
+  var data = $(ctx5).data("chart")["data"];
+  
   const processingOptions =  {
     type: 'bar',
+    legend: { display: false },
     data: {
       datasets: data,
     },
@@ -33,7 +34,10 @@ $(function () {
           ticks: {
             major: {
               enabled: true,
-              fontStyle: 'bold'
+              fontStyle: 'bold',
+              reverse: true,
+              suggestedMin: 10,
+              suggestedMax: 30
             },
             beginAtZero:true,
             source: 'data',
@@ -45,6 +49,7 @@ $(function () {
           }
         }],
         yAxes: [{
+          display: false,
           gridLines: {
             drawBorder: false
           },
