@@ -20,7 +20,7 @@
       {% for queue in queues %}
         <tr>
           <td class="tx-color-03 tx-normal tx-danger">{{queue.status}}</td>
-          <td class="tx-color-03 tx-normal">{{queue.name}}</td>
+          <td class="tx-color-03 tx-normal"><a href="/queues/{{queue.name}}">{{queue.name}}</a></td>
           <td class="text-right">{{queue.jobs}}</td>
           <td class="tx-medium text-right">{{queue.total_workers}}</td>
           <td class="tx-medium text-right">{{queue.active_workers}}</td>
