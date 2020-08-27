@@ -14,16 +14,5 @@ module Queues
         "latency_spark" => Queues::LatencySpark.new(@name).to_s(IO::Memory.new).to_s
       }
     end
-
-    def xml
-    end
-
-    def text
-      "TEXT"
-    end
-
-    def json
-      { json: true }.to_json
-    end
   end
 end

@@ -6,6 +6,7 @@ module Queues
     TEMPLATE = "queues/partials/stats_card.jinja.html"
     
     def initialize(@name : String)
+      super()
     end
     
     def mount
@@ -28,7 +29,7 @@ module Queues
     end
 
     private def total_jobs
-      since = 5.seconds.ago.to_unix_ms
+      since = 1.seconds.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
       joobq.range("#{@name}:success", since: since, to: to, count: 1, group: 1000).first.as(Array).last
     rescue
@@ -36,10 +37,10 @@ module Queues
     end
 
     private def jobs_series
-      since = 15.minutes.ago.to_unix_ms
+      since = 1.minute.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
 
-      joobq.range("#{@name}:success", since: since, to: to, count: 39, group: 60000).map do |item|
+      joobq.range("#{@name}:success", since: since, to: to, count: 35, group: 1000).map do |item|
         item.as(Array).last.as(String)
       end.join(",")
     rescue

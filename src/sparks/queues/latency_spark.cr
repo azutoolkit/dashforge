@@ -6,10 +6,11 @@ module Queues
     TEMPLATE = "queues/partials/stats_card.jinja.html"
 
     def initialize(@name : String)
+      super()
     end
     
     def mount
-      every(1.seconds) { refresh }
+      every(3.seconds) { refresh }
     end
   
     def render(io)
@@ -39,9 +40,9 @@ module Queues
     end
 
     private def latency_overtime
-      since = 15.minutes.ago.to_unix_ms
+      since = 5.minutes.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
-      joobq.range("#{@name}:success", since: since, to: to, aggr: "avg", count: 39, group: 1000).map do |item|
+      joobq.range("#{@name}:success", since: since, to: to, aggr: "avg", count: 35, group: 1000).map do |item|
         (item.as(Array).last.as(String).to_f64).round(2)
       end.join(",")
     rescue 

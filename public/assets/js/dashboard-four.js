@@ -8,59 +8,61 @@ $(function () {
   var ctxColor1 = '#65e0e0';
   var ctxColor2 = '#69b2f8'
 
-  var ctx5 = document.getElementById('processing-chart');
-  var data = $(ctx5).data("chart")["data"];
-  
-  const processingOptions =  {
-    type: 'bar',
-    data: {
-      datasets: data,
-    },
-    options: {
-      legend: { display: false },
-      animation: {
-        duration: 0
+  if ($('#processing-chart').length){
+    var ctx5 = document.getElementById('processing-chart');
+    var data = $(ctx5).data("chart")["data"];
+    
+    const processingOptions =  {
+      type: 'bar',
+      data: {
+        datasets: data,
       },
-      scales: {
-        xAxes: [{
-          type: 'time',
-          distribution: 'series',
-          time: {
-            displayFormats: {
-              quarter: 'mm:ss a'
-            },
-         },
-          offset: false,
-          ticks: {
-            major: {
-              enabled: true,
-              fontStyle: 'bold',
-              reverse: true,
-              suggestedMin: 10,
-              suggestedMax: 30
-            },
-            beginAtZero:true,
-            source: 'data',
-            autoSkip: true,
-            autoSkipPadding: 10,
-            maxRotation: 0,
-            sampleSize: 10,
-            gridLines: false
-          }
-        }],
-        yAxes: [{
-          gridLines: {
-            drawBorder: false
+      options: {
+        legend: { display: false },
+        animation: {
+          duration: 0
+        },
+        scales: {
+          xAxes: [{
+            type: 'time',
+            distribution: 'series',
+            time: {
+              displayFormats: {
+                quarter: 'mm:ss a'
+              },
           },
-          scaleLabel: {
-            display: false,
-          },
-        }]
+            offset: false,
+            ticks: {
+              major: {
+                enabled: true,
+                fontStyle: 'bold',
+                reverse: true,
+                suggestedMin: 10,
+                suggestedMax: 30
+              },
+              beginAtZero:true,
+              source: 'data',
+              autoSkip: true,
+              autoSkipPadding: 10,
+              maxRotation: 0,
+              sampleSize: 10,
+              gridLines: false
+            }
+          }],
+          yAxes: [{
+            gridLines: {
+              drawBorder: false
+            },
+            scaleLabel: {
+              display: false,
+            },
+          }]
+        }
       }
-    }
-  };
+    };
 
-  window.processingChart = new Chart(ctx5, processingOptions);
+    window.processingChart = new Chart(ctx5, processingOptions);
+  }
 
   $.plot('#flotChart1', [{
     data: df2,

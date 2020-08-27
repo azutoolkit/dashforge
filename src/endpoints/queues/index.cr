@@ -13,10 +13,9 @@ module Queues
   end
 
   struct IndexEndpoint
-    include Azu::Endpoint(QueueIndexRequest, Queues::Index | Azu::BadRequest)
+    include Azu::Endpoint(QueueIndexRequest, Queues::Index)
 
-    def call : Queues::Index | Azu::BadRequest
-      return Azu::BadRequest.new(request.errors_messages) unless request.valid?
+    def call : Queues::Index
       Queues::Index.new(request.name)
     end
   end

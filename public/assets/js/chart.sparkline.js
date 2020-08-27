@@ -33,33 +33,37 @@ $(function(){
     fillColor: 'rgba(182,84,195,0.2)'
   });
 
+  document.addEventListener('spark-render', () => {
+    /******************* BAR CHARTS *****************/
+    $('#latency-sparkline').sparkline('html', {
+      type: 'bar',
+      with: '100%',
+      barWidth: 6,
+      height: 70,
+      barColor: '#00b8d4',
+    });
 
-  /******************* BAR CHARTS *****************/
-  $('#latency-sparkline').sparkline('html', {
-    type: 'bar',
-    with: '100%',
-    barWidth: 6,
-    height: 70,
-    barColor: '#00b8d4',
-    tooltipContainer: $('.az-content')
-  });
+  
+    $('#requests-sparkline').sparkline('html', {
+      type: 'bar',
+      with: '100%',
+      barWidth: 6,
+      height: 70,
+      barColor: '#7987a1',
+    });
+    
+    $('#errors-sparkline').sparkline('html', {
+      type: 'bar',
+      with: '100%',
+      barWidth: 6,
+      height: 70,
+      barColor: '#dc3545',
+    });
+  })
 
-  $('#requests-sparkline').sparkline('html', {
-    type: 'bar',
-    with: '100%',
-    barWidth: 6,
-    height: 70,
-    barColor: '#7987a1',
-    tooltipContainer: $('.az-content')
-  });
+  
 
-  $('#errors-sparkline').sparkline('html', {
-    type: 'bar',
-    with: '100%',
-    barWidth: 6,
-    height: 70,
-    barColor: '#dc3545'
-  });
+  
 
   $('#sparkline6').sparkline('html', {
     type: 'bar',

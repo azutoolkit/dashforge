@@ -4,7 +4,10 @@ iter = 10
 count = 10_000_i64
 total = iter * count
 
-total.times { |_| FailJob.perform }
-total.times { |_| EmailJob.perform }
-total.times { |i| TestJob.perform(x: i) }
+loop do
+  sleep rand(20).seconds
+  rand(total).times { |_| FailJob.perform }
+  rand(total).times { |_| EmailJob.perform }
+  rand(total).times { |i| TestJob.perform(x: i) }
+end
   

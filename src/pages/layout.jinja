@@ -35,7 +35,8 @@
     <script src="/assets/js/dashforge.sampledata.js" type="text/javascript"></script>
     <script src="/assets/js/dashboard-four.js" type="text/javascript"></script>
     {% endblock  %}
-    {# <script type="module">
+
+    <script type="module">
       import { h, Component, render, hydrate} from 'https://unpkg.com/preact?module';
       import htm from 'https://unpkg.com/htm?module';
       const html = htm.bind(h);
@@ -49,7 +50,6 @@
 
       live_view.addEventListener('open', (event) => {
         // Hydrate client-side rendering
-        console.log(document.querySelectorAll('[data-live-view]'))
         document.querySelectorAll('[data-live-view]')
           .forEach((view)=> {
             var node = html(view.innerHTML)[0];
@@ -65,15 +65,14 @@
         var html = htm.bind(h);
         var data = event.data;
         var { id, content } = JSON.parse(data);
-
         document.querySelectorAll(`[data-live-view="${id}"]`)
           .forEach((view) => {
             var div = window.$('<div>' + content + '</div>');
             view.children[0].innerHTML = div[0].innerHTML
             render(div[0], view, view.children[0]) ;
-          });
         
-        document.dispatchEvent(sparkRenderEvent);
+            document.dispatchEvent(sparkRenderEvent);
+          });
       });
 
       live_view.addEventListener('close', (event) => {
@@ -110,6 +109,6 @@
           }
         });
       });
-    </script> #}
+    </script>
   </body>
 </html>
