@@ -2,12 +2,10 @@ module Queues
   class LatencySpark < Azu::SparkView
     include Azu::Html
     getter joobq = JoobQ.statistics
-    getter start_time : Int64
     
-    TEMPLATE = "queues/partials/latency.jinja.html"
+    TEMPLATE = "queues/partials/stats_card.jinja.html"
 
     def initialize(@name : String)
-      @start_time = 5.hours.ago.to_unix_ms
     end
     
     def mount
@@ -20,22 +18,34 @@ module Queues
   
     def html
       render TEMPLATE, {
-        "average_latency" => average_latency,
-        "latency_overtime" => latency_overtime
+        "title" => "latency",
+        "unit" => "ms",
+        "color" => "info",
+        "count" => average_latency,
+        "series" => latency_overtime,
+        "sparkline" => "latency",
       }
     end
 
     private def average_latency
-      joobq.range("#{@name}:success", since: start_time, count: 1, aggr: "avg")
+      since = 5.seconds.ago.to_unix_ms
+      to = 1.second.from_now.to_unix_ms
+      joobq.range("#{@name}:success", since: since, to: to, count: 1, aggr: "avg", group: 1000)
         .first.as(Array)
         .last
         .as(String).to_f64.round(2)
+    rescue
+      0
     end
 
     private def latency_overtime
-      joobq.range("#{@name}:success", start_time, aggr: "avg", count: 38).map do |item|
+      since = 15.minutes.ago.to_unix_ms
+      to = 1.second.from_now.to_unix_ms
+      joobq.range("#{@name}:success", since: since, to: to, aggr: "avg", count: 39, group: 1000).map do |item|
         (item.as(Array).last.as(String).to_f64).round(2)
       end.join(",")
+    rescue 
+      0
     end
   end
 end

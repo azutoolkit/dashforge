@@ -1,5 +1,5 @@
 module Queues
-  class ErrorsSpark < Azu::SparkView
+  class JobsSpark < Azu::SparkView
     include Azu::Html
     getter joobq = JoobQ.statistics
 
@@ -18,30 +18,31 @@ module Queues
   
     def html
       render TEMPLATE, {
-        "title" => "Errors",
-        "unit" => "errors",
-        "color" => "danger",
-        "count" => total_errors,
-        "series" => errors_series,
-        "sparkline" => "errors",
+        "title" => "Jobs Per Second",
+        "unit" => "j/s",
+        "color" => "secondary",
+        "count" => total_jobs,
+        "series" => jobs_series,
+        "sparkline" => "requests",
       }
     end
 
-    private def total_errors
+    private def total_jobs
       since = 5.seconds.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
-      joobq.range("#{@name}:error", since: since, to: to, count: 1, group: 1000).first.as(Array).last
+      joobq.range("#{@name}:success", since: since, to: to, count: 1, group: 1000).first.as(Array).last
     rescue
       0
     end
 
-    private def errors_series
+    private def jobs_series
       since = 15.minutes.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
-      joobq.range("#{@name}:error", since: since, to: to, count: 39, group: 1000).map do |item|
+
+      joobq.range("#{@name}:success", since: since, to: to, count: 39, group: 60000).map do |item|
         item.as(Array).last.as(String)
       end.join(",")
-    rescue 
+    rescue
       0
     end
   end
