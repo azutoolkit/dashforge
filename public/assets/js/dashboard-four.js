@@ -13,11 +13,11 @@ $(function () {
   
   const processingOptions =  {
     type: 'bar',
-    legend: { display: false },
     data: {
       datasets: data,
     },
     options: {
+      legend: { display: false },
       animation: {
         duration: 0
       },
@@ -49,7 +49,6 @@ $(function () {
           }
         }],
         yAxes: [{
-          display: false,
           gridLines: {
             drawBorder: false
           },
