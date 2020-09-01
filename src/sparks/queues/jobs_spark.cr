@@ -1,9 +1,9 @@
 module Queues
   class JobsSpark < Azu::SparkView
     include Azu::Html
-    getter joobq = JoobQ.statistics
-
     TEMPLATE = "queues/partials/stats_card.jinja.html"
+
+    getter joobq = JoobQ.statistics
     
     def initialize(@name : String)
       super()
@@ -13,8 +13,8 @@ module Queues
       every(5.seconds) { refresh }
     end
   
-    def render(io)
-      io << html
+    def component
+      html
     end
   
     def html
@@ -40,7 +40,7 @@ module Queues
       since = 1.minute.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
 
-      joobq.range("#{@name}:success", since: since, to: to, count: 35, group: 1000).map do |item|
+      joobq.range("#{@name}:success", since: since, to: to, count: 39, group: 1000).map do |item|
         item.as(Array).last.as(String)
       end.join(",")
     rescue

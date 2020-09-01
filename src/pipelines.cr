@@ -1,7 +1,7 @@
 JoobqGui.pipelines do
   build :web do
-    plug Azu::Rescuer.new
-    plug Azu::Logger.new
+    # plug Azu::Rescuer.new
+    # plug Azu::Logger.new
   end
 
   build :static do

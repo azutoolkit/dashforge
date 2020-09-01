@@ -13,8 +13,8 @@ module Queues
       every(5.seconds) { refresh }
     end
   
-    def render(io)
-      io << html
+    def component
+      html
     end
   
     def html
@@ -39,7 +39,7 @@ module Queues
     private def errors_series
       since = 15.minutes.ago.to_unix_ms
       to = 1.second.from_now.to_unix_ms
-      joobq.range("#{@name}:error", since: since, to: to, count: 35, group: 1000).map do |item|
+      joobq.range("#{@name}:error", since: since, to: to, count: 39, group: 1000).map do |item|
         item.as(Array).last.as(String)
       end.join(",")
     rescue 

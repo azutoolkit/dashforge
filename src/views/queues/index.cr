@@ -2,6 +2,7 @@ module Queues
   struct Index
     include Azu::Html
     getter joobq = JoobQ.statistics
+    getter name : String
 
     def initialize(@name : String)
     end
@@ -9,9 +10,9 @@ module Queues
     def html
       render "queues/index.jinja", {
         "queue" => joobq.queue(@name),
-        "jobs_spark" => Queues::JobsSpark.new(@name).to_s(IO::Memory.new).to_s,
-        "errors_spark" => Queues::ErrorsSpark.new(@name).to_s(IO::Memory.new).to_s,
-        "latency_spark" => Queues::LatencySpark.new(@name).to_s(IO::Memory.new).to_s
+        "jobs_spark" => Queues::JobsSpark.new(name).to_s,
+        "errors_spark" => Queues::ErrorsSpark.new(name).to_s,
+        "latency_spark" => Queues::LatencySpark.new(name).to_s
       }
     end
   end

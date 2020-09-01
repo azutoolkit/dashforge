@@ -11,6 +11,10 @@ JoobqGui.router do
     get "/:name", Queues::IndexEndpoint
   end
 
+  routes :web, "/jobs" do
+    get "/", Jobs::ShowEndpoint
+  end
+  
   routes :static do
     get "/*", Static
   end

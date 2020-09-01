@@ -14,6 +14,7 @@ $(function () {
     
     const processingOptions =  {
       type: 'bar',
+      maintainAspectRatio: false,
       data: {
         datasets: data,
       },

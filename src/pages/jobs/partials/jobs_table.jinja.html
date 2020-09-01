@@ -8,15 +8,15 @@
     <table class="table table-dashboard mg-b-0">
       <thead>
         <tr>
-          <th class="text-dark">Status</th>
-          <th class="text-dark">Name</th>
-          <th class="text-right text-dark">Jobs</th>
-          <th class="text-right text-dark">No. Workers</th>
-          <th class="text-right text-dark">Queued Jobs</th>
+          <th class="text-dark">Job ID</th>
+          <th class="text-right text-dark">Run At</th>
+          <th class="text-right text-dark">Failed At</th>
+          <th class="text-dark">Retries</th>
+          <th class="text-right text-dark">Done At</th>
         </tr>
       </thead>
       <tbody> 
-      {% for queue in queues %}
+      {% for job in jobs %}
         <tr>
           <td class="tx-color-03 tx-normal tx-danger">{{queue.status}}</td>
           <td class="tx-color-03 tx-normal"><a href="/queues/{{queue.name}}">{{queue.name}}</a></td>

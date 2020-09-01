@@ -5,10 +5,12 @@ module Dashboard
 
     def html
       render "dashboard/index.jinja", {
-        "counts" => counts, 
+        "busy" => BusySpark.new.to_s,
+        "latency" => LatencySpark.new.to_s,
+        "counts" => counts[:busy], 
         "processing_chart_data" => { data: processing }.to_json,
-        "processing_status" => ProcessingStatusSpark.new.to_s(IO::Memory.new).to_s,
-        "queue_table" => QueueTableSpark.new.to_s(IO::Memory.new).to_s
+        "processing_status" => ProcessingStatusSpark.new.to_s,
+        "queue_table" => QueueTableSpark.new.to_s
       }
     end
 

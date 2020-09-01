@@ -6,7 +6,7 @@
 
 {% block page_body %}
 <div class="row row-xs">
-  <div class="col-lg-8">
+  <div class="col">
     <div class="card">
       <div class="card-header d-sm-flex justify-content-between bd-b-0 pd-t-20 pd-b-0">
         <div class="mg-b-10 mg-sm-b-0">
@@ -15,28 +15,23 @@
       </div>
       <div class="card-body">
         <div class="chart-fifteen">
-          <canvas id="processing-chart" style="height: 350px;" data-chart='{{processing_chart_data}}'></canvas>
+          <canvas id="processing-chart" style="height:40vh; width:80vw" data-chart='{{processing_chart_data}}'></canvas>
         </div>
       </div>
           
       {{ processing_status }}
     </div>
-
-    <div class="row row-xs mg-t-10">
-      <div class="col mg-t-10 mg-md-t-0">
-      {{ queue_table }}
-      </div>
-    </div>
   </div>
-  <div class="col-lg-4 mg-t-10 mg-lg-t-0">
-    <div class="row row-xs">
-      <div class="col-12 col-md-6 col-lg-12">
-        {% include 'dashboard/partials/jobs_latency.jinja.html' %}
-      </div>
-      <div class="col-12 col-md-6 col-lg-12 mg-t-10">
-        {% include 'dashboard/partials/jobs_received.jinja.html' %}
-      </div>
-    </div>
+</div>
+<div class="row row-xs">
+  <div class="col-lg-6 col-md-6 mg-t-10">
+    {{ queue_table }}
+  </div>
+  <div class="col-lg-3 col-md-6 mg-t-10">
+    {{ busy }}
+  </div>
+  <div class="col-lg-3 col-md-6 mg-t-10">
+    {{ latency }}
   </div>
 </div>
 {% endblock %}

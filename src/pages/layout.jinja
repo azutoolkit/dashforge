@@ -13,8 +13,8 @@
     <link href="/assets/lib/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/lib/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link href="/assets/css/dashforge.css" rel="stylesheet" type="text/css">
-    {% block styles %}
-    {% endblock  %}
+    {% block styles %}{% endblock  %}
+    <link href="/assets/css/dashforge.css" rel="stylesheet" type="text/css">
   </head>
 
   <body class="mn-ht-100v d-flex flex-column">
@@ -67,6 +67,7 @@
         var { id, content } = JSON.parse(data);
         document.querySelectorAll(`[data-live-view="${id}"]`)
           .forEach((view) => {
+            console.log(view)
             var div = window.$('<div>' + content + '</div>');
             view.children[0].innerHTML = div[0].innerHTML
             render(div[0], view, view.children[0]) ;
