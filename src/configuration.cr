@@ -1,3 +1,3 @@
 JoobqGui.configure do
-  templates.path = "src/pages"
+  templates.path = "src/templates"
 end

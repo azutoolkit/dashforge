@@ -1,7 +1,7 @@
 module Queues
   class JobsSpark < Azu::SparkView
     include Azu::Html
-    TEMPLATE = "queues/partials/stats_card.jinja.html"
+    TEMPLATE = "partials/stats_card.jinja.html"
 
     getter joobq = JoobQ.statistics
     

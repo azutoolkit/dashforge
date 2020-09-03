@@ -3,14 +3,14 @@ module Dashboard
     include Azu::Html
     getter joobq = JoobQ.statistics
     
-    TEMPLATE = "queues/partials/queue_table.jinja.html"
+    TEMPLATE = "partials/queue_table.jinja.html"
 
     def mount
       every(1.seconds) { refresh }
     end
   
-    def render(io)
-      io << html
+    def component
+      html
     end
   
     def html

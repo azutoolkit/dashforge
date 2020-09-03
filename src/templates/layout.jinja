@@ -67,7 +67,6 @@
         var { id, content } = JSON.parse(data);
         document.querySelectorAll(`[data-live-view="${id}"]`)
           .forEach((view) => {
-            console.log(view)
             var div = window.$('<div>' + content + '</div>');
             view.children[0].innerHTML = div[0].innerHTML
             render(div[0], view, view.children[0]) ;

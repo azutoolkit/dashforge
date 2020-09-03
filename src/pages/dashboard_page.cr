@@ -1,16 +1,16 @@
 module Dashboard
-  struct Index
+  struct Dashboard
     include Azu::Html
     getter joobq = JoobQ.statistics
 
     def html
       render "dashboard/index.jinja", {
-        "busy" => BusySpark.new.to_s,
-        "latency" => LatencySpark.new.to_s,
+        "busy" => BusySpark.new.content,
+        "latency" => LatencySpark.new.content,
         "counts" => counts[:busy], 
         "processing_chart_data" => { data: processing }.to_json,
-        "processing_status" => ProcessingStatusSpark.new.to_s,
-        "queue_table" => QueueTableSpark.new.to_s
+        "processing_status" => ProcessingStatusSpark.new.content,
+        "queue_table" => QueueTableSpark.new.content
       }
     end
 

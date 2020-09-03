@@ -3,7 +3,7 @@ module Queues
     include Azu::Html
     getter joobq = JoobQ.statistics
 
-    TEMPLATE = "queues/partials/stats_card.jinja.html"
+    TEMPLATE = "partials/stats_card.jinja.html"
     
     def initialize(@name : String)
       super()

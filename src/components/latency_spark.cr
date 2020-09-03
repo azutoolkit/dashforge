@@ -3,7 +3,7 @@ module Dashboard
     include Azu::Html
     getter joobq = JoobQ.statistics
 
-    TEMPLATE = "dashboard/partials/count.jinja.html"
+    TEMPLATE = "partials/count.jinja.html"
 
     def mount
       every(1.seconds) { refresh }
