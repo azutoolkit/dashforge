@@ -1,5 +1,5 @@
 module Jobs
-  struct Show
+  struct ShowPage
     include Azu::Html
 
     def html

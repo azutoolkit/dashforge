@@ -1,9 +1,9 @@
 module Jobs
-  struct ShowEndpoint
-    include Azu::Endpoint(Azu::Request, Jobs::Show)
+  struct Show
+    include Azu::Endpoint(Azu::Request, Jobs::ShowPage)
 
-    def call : Jobs::Show
-      Jobs::Show.new
+    def call : Jobs::ShowPage
+      Jobs::ShowPage.new
     end
   end
 end

@@ -33,8 +33,12 @@ class QueuesTable < Azu::SparkView
     HTML
   end
 
-  def rows
-    joobq.queues_details.map do |queue|
+  private def queues
+    joobq.queues_details
+  end
+
+  private def rows
+    queues.map do |queue|
       <<-HTML
       <tr>
         <td class="tx-color-03 tx-normal tx-danger">#{queue[:status]}</td>

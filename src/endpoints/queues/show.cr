@@ -1,7 +1,7 @@
 require "azu/params"
 
 module Queues
-  struct QueueIndexRequest
+  struct ShowRequest
     include Azu::Request
 
     def name
@@ -13,11 +13,11 @@ module Queues
     end
   end
 
-  struct IndexEndpoint
-    include Azu::Endpoint(QueueIndexRequest, Queues::Index)
+  struct Show
+    include Azu::Endpoint(ShowRequest, Queues::ShowPage)
 
-    def call : Queues::Index
-      Queues::Index.new(request.name)
+    def call : Queues::ShowPage
+      Queues::ShowPage.new(request.name)
     end
   end
 end
