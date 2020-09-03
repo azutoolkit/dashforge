@@ -1,9 +1,9 @@
 module Dashboard
-  struct IndexEndpoint
-    include Azu::Endpoint(Azu::Request, Dashboard::Index)
+  struct Index
+    include Azu::Endpoint(Azu::Request, DashboardPage)
 
-    def call : Dashboard::Index
-      Dashboard::Index.new
+    def call : DashboardPage
+      DashboardPage.new
     end
   end
 end

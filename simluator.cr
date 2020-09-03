@@ -10,4 +10,3 @@ loop do
   rand(total).times { |_| EmailJob.perform }
   rand(total).times { |i| TestJob.perform(x: i) }
 end
-  

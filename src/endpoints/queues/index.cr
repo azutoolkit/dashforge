@@ -1,4 +1,5 @@
 require "azu/params"
+
 module Queues
   struct QueueIndexRequest
     include Azu::Request

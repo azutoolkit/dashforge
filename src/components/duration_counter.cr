@@ -1,9 +1,6 @@
-module Queues
-  class LatencySpark < Azu::SparkView
-    include Azu::Html
+  class DurationCounter < Azu::SparkView
+    include Components
     getter joobq = JoobQ.statistics
-    
-    TEMPLATE = "partials/stats_card.jinja.html"
 
     def initialize(@name : String)
       super()
@@ -14,18 +11,7 @@ module Queues
     end
   
     def component
-      html
-    end
-  
-    def html
-      render TEMPLATE, {
-        "title" => "Latency",
-        "unit" => "ms",
-        "color" => "info",
-        "count" => average_latency,
-        "series" => latency_overtime,
-        "sparkline" => "latency",
-      }
+      card_counter("Duration", "ms", "info", "latency", average_latency.to_s, latency_overtime.to_s).to_s
     end
 
     private def average_latency
@@ -49,4 +35,3 @@ module Queues
       0
     end
   end
-end
