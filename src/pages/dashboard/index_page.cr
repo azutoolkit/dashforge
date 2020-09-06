@@ -7,12 +7,12 @@ module Dashboard
 
     def html
       render TEMPLATE, {
-        "busy"                  => ProcessingCounter.new.render,
-        "latency"               => LatencyCounter.new.render,
+        "busy"                  => ProcessingCounter.mount,
+        "latency"               => LatencyCounter.mount,
         "counts"                => counts[:busy],
         "processing_chart_data" => {data: processing}.to_json,
-        "processing_status"     => ProcessingChart.new.render,
-        "queue_table"           => QueuesTable.new.render,
+        "processing_status"     => ProcessingChart.mount,
+        "queue_table"           => QueuesTable.mount,
       }
     end
 

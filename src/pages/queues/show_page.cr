@@ -9,10 +9,10 @@ module Queues
 
     def html
       render "queues/index.jinja", {
-        "queue"         => joobq.queue(@name),
-        "jobs_spark"    => JobsCounter.new(name).render,
-        "errors_spark"  => ErrorsCounter.new(name).render,
-        "latency_spark" => DurationCounter.new(name).render,
+        "queue"         => joobq.queue(name: name),
+        "jobs_spark"    => JobsCounter.mount(name: name),
+        "errors_spark"  => ErrorsCounter.mount(name: name),
+        "latency_spark" => DurationCounter.mount(name: name),
       }
     end
   end

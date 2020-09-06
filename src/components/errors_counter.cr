@@ -1,16 +1,17 @@
-class ErrorsCounter < Azu::SparkView
-  include Components
+class ErrorsCounter
+  include Azu::Component
+  include Commons
+
   getter joobq = JoobQ.statistics
 
   def initialize(@name : String)
-    super()
   end
 
   def mount
     every(5.seconds) { refresh }
   end
 
-  def component
+  def content
     card_counter("Errors", "errors", "danger", "errors", total_errors.to_s, errors_series.to_s).to_s
   end
 

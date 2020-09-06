@@ -1,16 +1,17 @@
-class JobsCounter < Azu::SparkView
-  include Components
+class JobsCounter
+  include Azu::Component
+  include Commons
+
   getter joobq = JoobQ.statistics
 
   def initialize(@name : String)
-    super()
   end
 
   def mount
     every(5.seconds) { refresh }
   end
 
-  def component
+  def content
     card_counter("Jobs Per Second", "j/s", "secondary", "requests", total_jobs.to_s, jobs_series.to_s).to_s
   end
 

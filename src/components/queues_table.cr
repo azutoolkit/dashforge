@@ -1,53 +1,48 @@
-class QueuesTable < Azu::SparkView
+class QueuesTable
+  include Azu::Component
   getter joobq = JoobQ.statistics
 
   def mount
     every(1.seconds) { refresh }
   end
 
-  def component
-    <<-HTML
-    <div class="card mg-b-10">
-      <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between bd-b-0 pd-b-0">
-        <div>
-          <h6 class="mg-b-5">Your Queues</h6>
-        </div>
-      </div>
-      <div class="table-responsive">
-        <table class="table table-dashboard mg-b-0">
-          <thead>
-            <tr>
-              <th class="text-dark">Status</th>
-              <th class="text-dark">Name</th>
-              <th class="text-right text-dark">Jobs</th>
-              <th class="text-right text-dark">No. Workers</th>
-              <th class="text-right text-dark">Queued Jobs</th>
-            </tr>
-          </thead>
-          <tbody> 
-          #{rows}
-          </tbody>
-        </table>
-      </div>
-    </div>
-    HTML
+  def content
+    div class: "card mg-b-10" do
+      div class: "card-header pd-t-20 d-sm-flex align-items-start justify-content-between bd-b-0 pd-b-0" do
+        div do
+          h6 "Your Queues", class: "mg-b-5"
+        end
+      end
+      div class: "table-responsive" do
+        table class: "table table-dashboard mg-b-0" do
+          thead do
+            tr do
+              th "Status", class: "text-dark"
+              th "Name", class: "text-dark"
+              th "Jobs", class: "text-right text-dark"
+              th "No. Workers", class: "text-right text-dark"
+              th "Queued Jobs", class: "text-right text-dark"
+            end
+          end
+          tbody do
+            queues.map do |queue|
+              tr do
+                td queue[:status], class: "tx-color-03 tx-normal tx-danger"
+                td class: "tx-color-03 tx-normal" do
+                  a queue[:name], href: "/queues/#{queue[:name]}"
+                end
+                td queue[:jobs], class: "text-right"
+                td queue[:total_workers].to_s, class: "tx-medium text-right"
+                td queue[:size].to_s, class: "text-right"
+              end
+            end
+          end
+        end
+      end
+    end
   end
 
   private def queues
     joobq.queues_details
-  end
-
-  private def rows
-    queues.map do |queue|
-      <<-HTML
-      <tr>
-        <td class="tx-color-03 tx-normal tx-danger">#{queue[:status]}</td>
-        <td class="tx-color-03 tx-normal"><a href="/queues/#{queue[:name]}">#{queue[:name]}</a></td>
-        <td class="text-right">#{queue[:jobs]}</td>
-        <td class="tx-medium text-right">#{queue[:total_workers]}</td>
-        <td class="text-right">#{queue[:size]}</td>
-      </tr>
-      HTML
-    end
   end
 end
