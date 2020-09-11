@@ -8,10 +8,8 @@ class QueuesTable
 
   def content
     div class: "card mg-b-10" do
-      div class: "card-header pd-t-20 d-sm-flex align-items-start justify-content-between bd-b-0 pd-b-0" do
-        div do
-          h6 "Your Queues", class: "mg-b-5"
-        end
+      div class: "card-header d-flex align-items-center justify-content-between" do
+        h6 "Your Queues", class: "mg-b-0"
       end
       div class: "table-responsive" do
         table class: "table table-dashboard mg-b-0" do
