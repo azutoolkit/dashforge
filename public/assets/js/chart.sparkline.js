@@ -35,7 +35,7 @@ $(function(){
 
   document.addEventListener('spark-render', () => {
     /******************* BAR CHARTS *****************/
-    $('#latency-sparkline').sparkline('html', {
+    $('#duration-sparkline').sparkline('html', {
       type: 'bar',
       with: '100%',
       barWidth: 6,
