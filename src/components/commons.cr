@@ -9,14 +9,14 @@ module Commons
       div class: "card-body pd-0 pos-relative ht-120" do
         div class: "pos-absolute t-10 l-20 z-index-10  m-b-30" do
           div class: "d-flex d-lg-block d-xl-flex align-items-end" do
-            h3 "#{count} #{unit}", class: "tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 text-{{color}}"
+            h3 "#{count} #{unit}", class: "tx-normal tx-rubik mg-b-0 mg-r-5 lh-1 text-#{color}"
             para class: "tx-11 tx-color-03 mg-b-0" do
               text " last 5 seconds "
             end
           end
         end
         div style: "position: absolute; bottom: 0" do
-          span id: "errors-sparkline", values: "#{series}"
+          span id: "#{name}-sparkline", values: "#{series}"
         end
       end
     end
