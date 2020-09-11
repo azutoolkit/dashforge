@@ -12,7 +12,13 @@ class DurationCounter
   end
 
   def content
-    card_counter("Duration", "ms", "info", "latency", average_latency.to_s, latency_overtime.to_s).to_s
+    card_counter(
+      title: "Duration",
+      name: "duration",
+      unit: "ms", 
+      color: "info", 
+      count: average_latency.to_s, 
+      series: latency_overtime.to_s).to_s
   end
 
   private def average_latency

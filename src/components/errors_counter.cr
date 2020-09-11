@@ -12,7 +12,13 @@ class ErrorsCounter
   end
 
   def content
-    card_counter("Errors", "errors", "danger", "errors", total_errors.to_s, errors_series.to_s).to_s
+    card_counter(
+      title: "Errors", 
+      name: "errors", 
+      color: "danger", 
+      unit: "errors", 
+      count: total_errors.to_s, 
+      series: errors_series.to_s).to_s
   end
 
   private def total_errors
