@@ -11,10 +11,10 @@ class ProcessingCounter
       div class: "card-header" do
         h6 "Processing", class: "mg-b-0"
       end
-      
+
       div class: "card-body tx-center" do
         h4 class: "tx-normal tx-rubik tx-40 tx-spacing--1 mg-b-0" do
-          text processing 
+          text processing
           small " jobs"
         end
 

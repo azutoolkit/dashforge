@@ -13,11 +13,11 @@ class JobsCounter
 
   def content
     card_counter(
-      title: "Jobs Per Second", 
-      unit: "j/s", 
-      color: "secondary", 
-      name: "requests", 
-      count: total_jobs.to_s, 
+      title: "Jobs Per Second",
+      unit: "j/s",
+      color: "secondary",
+      name: "requests",
+      count: total_jobs.to_s,
       series: jobs_series.to_s).to_s
   end
 

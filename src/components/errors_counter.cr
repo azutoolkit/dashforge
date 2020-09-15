@@ -1,7 +1,6 @@
 class ErrorsCounter
   include Azu::Component
   include Commons
-
   getter joobq = JoobQ.statistics
 
   def initialize(@name : String)
@@ -13,11 +12,11 @@ class ErrorsCounter
 
   def content
     card_counter(
-      title: "Errors", 
-      name: "errors", 
-      color: "danger", 
-      unit: "errors", 
-      count: total_errors.to_s, 
+      title: "Errors",
+      name: "errors",
+      color: "danger",
+      unit: "errors",
+      count: total_errors.to_s,
       series: errors_series.to_s).to_s
   end
 

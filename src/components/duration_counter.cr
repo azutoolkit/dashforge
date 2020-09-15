@@ -1,4 +1,4 @@
-class DurationCounter 
+class DurationCounter
   include Azu::Component
   include Commons
 
@@ -15,9 +15,9 @@ class DurationCounter
     card_counter(
       title: "Duration",
       name: "duration",
-      unit: "ms", 
-      color: "info", 
-      count: average_latency.to_s, 
+      unit: "ms",
+      color: "info",
+      count: average_latency.to_s,
       series: latency_overtime.to_s).to_s
   end
 

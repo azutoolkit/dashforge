@@ -25,8 +25,8 @@ class ProcessingChart
     div class: "col-6 col-sm-4 col-md-3 col-lg" do
       h4 "#{total}", class: "tx-normal tx-rubik mg-b-10 mg-r-5"
       div class: "progress ht-2 mg-b-10" do
-        div aria_valuemax: "100", aria_valuemin: "0", aria_valuenow: "#{percent}", 
-          class: "progress-bar bg-df-2 bg-#{style}", data_toggle: "tooltip", 
+        div aria_valuemax: "100", aria_valuemin: "0", aria_valuenow: "#{percent}",
+          class: "progress-bar bg-df-2 bg-#{style}", data_toggle: "tooltip",
           role: "progressbar", style: "width: #{percent}%", title: "#{percent}% of jobs"
       end
       h6 "#{name} #{percent}%", class: "tx-uppercase tx-spacing-1 tx-semibold tx-10 tx-color-02 mg-b-2 text-#{style}"

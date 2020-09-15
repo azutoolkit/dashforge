@@ -43,7 +43,6 @@ $(function(){
       barColor: '#00b8d4',
     });
 
-  
     $('#requests-sparkline').sparkline('html', {
       type: 'bar',
       with: '100%',
