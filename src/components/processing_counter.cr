@@ -18,8 +18,7 @@ class ProcessingCounter
           small " jobs"
         end
 
-        para "Jobs currently busy", class: "tx-12 tx-uppercase tx-semibold tx-spacing-1 tx-color-02"
-        para "Jobs currently busy.", class: "tx-12 tx-color-03 mg-b-0"
+        div "Jobs currently busy", class:"divider-text"
       end
     end
   end
