@@ -1,5 +1,4 @@
 require "azu"
-require "mime"
 require "joobq"
 
 require "./jobs/*"

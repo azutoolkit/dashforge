@@ -28,7 +28,7 @@ class LatencyCounter
       to: 1.second.from_now.to_unix_ms,
       aggr: "avg",
       count: 1,
-      group: 10000
+      group: 10000,
     ).first.as(Array).last
   rescue e
     0
