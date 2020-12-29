@@ -1,18 +1,49 @@
 require "azu"
 require "joobq"
 
-require "./jobs/*"
-require "./config/**"
-require "./channels/**"
-require "./components/**"
-require "./pages/**"
-require "./handlers/**"
-require "./endpoints/**"
-require "./configuration"
-require "./pipelines"
-require "./routes"
-
 module JoobqGui
   include Azu
   VERSION = "0.1.0"
+
+  JoobQ::Statistics.create_series
+
+  configure do
+    templates.path = "src/templates"
+  end
+
+  Pipeline[:web] = [
+    Handler::Rescuer.new,
+    Handler::Logger.new,
+    Handler::Static.new("public"),
+  ]
+
+  Pipeline[:static] = [
+    Handler::Static.new("public"),
+  ]
+
+  router do
+    root :web, Dashboard::Index
+
+    ws "/live-view", Spark
+    ws "/charts-data", ChartsChannel
+
+    routes :web, "/queues" do
+      get "/:name", Queues::Show
+    end
+
+    routes :web, "/jobs" do
+      get "/", Jobs::Show
+    end
+
+    routes :static do
+      get "/*", Static
+    end
+  end
 end
+
+require "./jobs/*"
+require "./config/**"
+require "./pages/**"
+require "./endpoints/**"
+require "./channels/**"
+require "./components/**"
