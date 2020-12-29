@@ -1,23 +1,27 @@
 require "azu/params"
 
-module Queues
-  struct ShowRequest
-    include Azu::Request
+module JoobqGui
+  module Queues
+    struct ShowRequest
+      include Request
 
-    def name
-      params.path["name"]
+      getter name : String?
+
+      def errors_messages
+        errors.messages.join(", ")
+      end
     end
 
-    def errors_messages
-      errors.messages.join(", ")
-    end
-  end
+    struct Show
+      include Azu::Endpoint(ShowRequest, Queues::ShowPage)
 
-  struct Show
-    include Azu::Endpoint(ShowRequest, Queues::ShowPage)
+      def call : Queues::ShowPage
+        Queues::ShowPage.new(request.name.not_nil!)
+      end
 
-    def call : Queues::ShowPage
-      Queues::ShowPage.new(request.name)
+      private def request
+        ShowRequest.new(params)
+      end
     end
   end
 end

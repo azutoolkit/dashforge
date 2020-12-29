@@ -1,9 +1,13 @@
-module Dashboard
-  struct Index
-    include Azu::Endpoint(Azu::Request, Dashboard::IndexPage)
+module JoobqGui
+  struct EmptyRequest
+    include Request
+  end
 
-    def call : Dashboard::IndexPage
-      Dashboard::IndexPage.new
+  class Dashboard::Index
+    include Endpoint(EmptyRequest, IndexPage)
+
+    def call : IndexPage
+      IndexPage.new
     end
   end
 end

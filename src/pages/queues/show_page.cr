@@ -1,6 +1,6 @@
-module Queues
-  struct ShowPage
-    include Azu::Html
+module JoobqGui
+  struct Queues::ShowPage
+    include Response::Html
     getter joobq = JoobQ.statistics
     getter name : String
 
