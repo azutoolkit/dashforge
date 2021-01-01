@@ -34,5 +34,5 @@ shards:
 
   schema:
     git: https://github.com/eliasjpr/schema.git
-    version: 0.1.0+git.commit.e2bb39b2d2ce5c4c214f5fb4bdf87d4379dafc87
+    version: 0.2.0
 

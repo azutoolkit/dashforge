@@ -17,7 +17,7 @@
             <li class="breadcrumb-item"><a href="#">Email</a></li>
           </ol>
         </nav>
-        <h4 class="mg-b-0">Job ID: SOME JOB ID HERE</h4>
+        <h4 class="mg-b-0">Job ID: {{job_id}}</h4>
       </div>
     </div>
   </div>
@@ -66,14 +66,16 @@
               <h6>What does royalty free mean?</h6>
               <div class="pd-0 m-0">
                 <pre class="code">
-                def find_missing(sequence)
-                  consecutive     = sequence.each_cons(2)
-                  differences     = consecutive.map { |a,b| b - a }
-                  sequence        = differences.max_by { |n| differences.count(n) }
-                  missing_between = consecutive.find { |a,b| (b - a) != sequence }
-                  missing_between.first + sequence
-                end
-                find_missing([2,4,6,10])
+Unhandled exception in spawn: Closed socket (IO::Error)
+from ../../../../usr/share/crystal/src/http/web_socket.cr:67:5 in 'check_open'
+from ../../../../usr/share/crystal/src/http/web_socket.cr:71:5 in 'send'
+from lib/azu/src/azu/component.cr:34:7 in 'refresh'
+from src/components/processing_counter.cr:6:24 in '->'
+from ../../../../usr/share/crystal/src/primitives.cr:255:3 in '->'
+from ../../../../usr/share/crystal/src/primitives.cr:255:3 in 'run'
+from ../../../../usr/share/crystal/src/fiber.cr:92:34 in '->'
+from ???
+
                 </pre>
               </div>
               <h6>What do you mean by item and end product?</h6>

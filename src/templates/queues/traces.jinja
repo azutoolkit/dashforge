@@ -1,29 +1,40 @@
-<div class="card mg-t-20">
-  <div class="card-header pd-t-20 d-sm-flex align-items-start justify-content-between bd-b-0 pd-b-0">
-    <div>
-      <h6 class="mg-b-5">Job Traces</h6>
+{% extends "layout.jinja" %}
+
+{% block page_body %}
+<h4 class="mg-b-0 tx-spacing--1">{{name}} Traces</h4>  
+<div class="row">
+  <div class="col col-12">
+    <div class="row row-xs">
+      <div class="col-lg">
+        <div class="mg-t-20">
+        {{ jobs_table_spark }}
+        </div>
+      </div>
     </div>
   </div>
-  <div class="table-responsive">
-    <table class="table table-dashboard mg-b-0">
-      <thead>
-        <tr>
-          <th><span class="tx-medium">Status</span></th>
-          <th><span class="tx-medium">Job ID</span>/th>
-          <th class="text-right"><span class="tx-medium">Retries</span></th>
-          <th class="text-right"><span class="tx-medium">Failed At</span></th>
-          <th class="text-right"><span class="tx-medium">Done At</span></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="tx-color-03 tx-normal"><span class="badge badge-success">done</span></td>
-          <td class="tx-medium">c089b3d1-3f94-4701-96aa-e5d5ece9396a</td>
-          <td class="text-right tx-teal">3 left</td> 
-          <td class="text-right tx-pink">- $3,023.10</td>
-          <td class="tx-medium text-right">$28,670.90</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </div>
+{% endblock %}
+
+{% block script_footer %}
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="/assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/feather-icons/feather.min.js"></script>
+<script src="/assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.stack.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="/assets/lib/flot.curvedlines/curvedLines.js"></script>
+<script src="/assets/lib/peity/jquery.peity.min.js"></script>
+<script src="/assets/lib/chart.js/Chart.bundle.min.js"></script>
+<script src="/assets/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<script src="/assets/js/dashforge.js"></script>
+<script src="/assets/js/dashforge.sampledata.js"></script>
+<script src="/assets/js/dashboard-four.js"></script>
+
+<script src="/assets/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<script src="/assets/js/chart.sparkline.js"></script>
+<!-- append theme customizer -->
+<script src="/assets/lib/js-cookie/js.cookie.js"></script>
+{% endblock  %}

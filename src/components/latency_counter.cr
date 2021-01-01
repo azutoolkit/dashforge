@@ -28,8 +28,8 @@ class LatencyCounter
       to: 1.second.from_now.to_unix_ms,
       aggr: "avg",
       count: 1,
-      group: 10000,
-    ).first.as(Array).last
+      group: 1000,
+    ).first.as(Array).last.as(String).to_f.format(decimal_places: 2)
   rescue e
     0
   end

@@ -6,6 +6,10 @@ class QueuesTable
     every(1.seconds) { refresh }
   end
 
+  private def queues
+    joobq.queues_details
+  end
+
   def content
     div class: "card mg-b-10" do
       div class: "card-header d-flex align-items-center justify-content-between bd-b-0" do
@@ -38,9 +42,5 @@ class QueuesTable
         end
       end
     end
-  end
-
-  private def queues
-    joobq.queues_details
   end
 end

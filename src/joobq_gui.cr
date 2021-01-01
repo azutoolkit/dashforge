@@ -28,12 +28,12 @@ module JoobqGui
     ws "/charts-data", ChartsChannel
 
     routes :web, "/queues" do
-      get "/:name", Queues::Show
+      get "/:queue", Queues::Show
+      get "/traces/:name", Queues::Traces
+      get "/:queue/jobs/:job_id", Jobs::Show
     end
 
-    routes :web, "/jobs" do
-      get "/", Jobs::Show
-    end
+    
 
     routes :static do
       get "/*", Static

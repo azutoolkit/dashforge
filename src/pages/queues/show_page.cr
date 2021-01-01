@@ -9,10 +9,11 @@ module JoobqGui
 
     def html
       render "queues/index.jinja", {
-        "queue"         => joobq.queue(name: name),
-        "jobs_spark"    => JobsCounter.mount(name: name),
-        "errors_spark"  => ErrorsCounter.mount(name: name),
-        "latency_spark" => DurationCounter.mount(name: name),
+        "queue"            => joobq.queue(name: name),
+        "jobs_spark"       => JobsCounter.mount(name: name),
+        "errors_spark"     => ErrorsCounter.mount(name: name),
+        "latency_spark"    => DurationCounter.mount(name: name),
+        "jobs_table_spark" => JobsTable.mount(name: "Busy"),
       }
     end
   end

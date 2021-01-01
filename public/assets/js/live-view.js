@@ -1,5 +1,6 @@
-import { h, Component, render, hydrate} from 'https://unpkg.com/preact?module';
+import { h, render, hydrate} from 'https://unpkg.com/preact?module';
 import htm from 'https://unpkg.com/htm?module';
+
 const html = htm.bind(h);
 
 var url = new URL(location.href);
@@ -26,6 +27,7 @@ live_view.addEventListener('message', (event) => {
   var html = htm.bind(h);
   var data = event.data;
   var { id, content } = JSON.parse(data);
+
   document.querySelectorAll(`[data-live-view="${id}"]`)
     .forEach((view) => {
       var div = window.$('<div>' + content + '</div>');

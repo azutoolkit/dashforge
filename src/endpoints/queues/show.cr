@@ -5,22 +5,19 @@ module JoobqGui
     struct ShowRequest
       include Request
 
-      getter name : String?
+      getter queue : String
 
       def errors_messages
         errors.messages.join(", ")
       end
     end
 
-    struct Show
+    class Show
       include Azu::Endpoint(ShowRequest, Queues::ShowPage)
 
       def call : Queues::ShowPage
-        Queues::ShowPage.new(request.name.not_nil!)
-      end
-
-      private def request
-        ShowRequest.new(params)
+        raise error("No queue name!", 400, show_request.errors.map(&.message)) unless show_request.valid?
+        Queues::ShowPage.new(show_request.queue)
       end
     end
   end

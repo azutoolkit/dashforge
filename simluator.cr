@@ -1,12 +1,11 @@
 require "./src/joobq_gui"
 
 iter = 10
-count = 10_000_i64
+count = 10_000
 total = iter * count
 
-loop do
-  sleep rand(20).seconds
-  rand(total).times { |_| FailJob.perform }
-  rand(total).times { |_| EmailJob.perform }
-  rand(total).times { |i| TestJob.perform(x: i) }
+total.times do |i|
+  FailJob.perform
+  EmailJob.perform
+  TestJob.perform(x: i)
 end
