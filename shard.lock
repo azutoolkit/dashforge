@@ -1,8 +1,8 @@
 version: 2.0
 shards:
   azu:
-    path: ../azu
-    version: 0.1.0
+    git: https://github.com/eliasjpr/azu.git
+    version: 0.1.0+git.commit.ea9a04f79ad62ff4114ec162e35e543fe61ab591
 
   crinja:
     git: https://github.com/straight-shoota/crinja.git
@@ -17,8 +17,8 @@ shards:
     version: 0.1.4
 
   joobq:
-    path: ../joobq
-    version: 0.1.0
+    git: https://github.com/eliasjpr/joobq.git
+    version: 0.1.0+git.commit.2d224bd96be2590ecc3da1aed4bcdefd02d6780d
 
   pool:
     git: https://github.com/ysbaddaden/pool.git

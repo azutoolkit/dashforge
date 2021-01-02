@@ -11,6 +11,8 @@ targets:
     main: src/start.cr
 dependencies: 
   azu:
-    path: ../azu
+    github: eliasjpr/azu
+    branch: refactor-request-params
   joobq:
-    path: ../joobq
+    github: eliasjpr/joobq
+    branch: better-job-processing
