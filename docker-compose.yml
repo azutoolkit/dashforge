@@ -8,7 +8,7 @@ services:
   web:
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.web
     command: ./start
     working_dir: /root/
     environment:
