@@ -5,10 +5,10 @@ license: MIT
 authors:
   - Elias J. Perez <eliasjpr@gmail.com>
 targets:
-  joobq_gui:
-    main: src/joobq_gui.cr
-  start:
+  dashforge:
     main: src/start.cr
+  worker:
+    main: ./worker.cr
 dependencies: 
   azu:
     github: eliasjpr/azu
