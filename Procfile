@@ -1,2 +1,3 @@
-web: ./bin/start 
-worker: ./bin/worker
+dashforge: ./bin/dashforge 
+joobq: ./bin/worker
+simulator: crystal ./simluator.cr
