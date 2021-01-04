@@ -16,7 +16,7 @@ class LatencyCounter
           text "#{latency} "
           small "ms"
         end
-        div "Jobs duration busy", class:"divider-text"
+        div "Jobs duration busy", class: "divider-text"
       end
     end
   end

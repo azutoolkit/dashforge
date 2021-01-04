@@ -33,8 +33,6 @@ module JoobqGui
       get "/:queue/jobs/:job_id", Jobs::Show
     end
 
-    
-
     routes :static do
       get "/*", Static
     end

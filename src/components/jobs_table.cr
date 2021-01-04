@@ -24,7 +24,7 @@ class JobsTable
               th "Job Id", class: "text-dark"
               th "Run At", class: "text-dark"
               th "Retries left", class: "text-dark"
-              th "Action", class: "text-dark" 
+              th "Action", class: "text-dark"
             end
           end
           tbody do
@@ -34,7 +34,7 @@ class JobsTable
                 td class: "tx-color-03 tx-normal tx-danger" do
                   a job["jid"].as_s, href: "/queues/#{job["queue"]}/jobs/#{job["jid"]}"
                 end
-                td "", class: "tx-color-03 tx-normal" 
+                td "", class: "tx-color-03 tx-normal"
                 td job["retries"].to_s, class: "tx-medium"
                 td "Remove"
               end

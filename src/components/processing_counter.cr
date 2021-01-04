@@ -18,7 +18,7 @@ class ProcessingCounter
           small " jobs"
         end
 
-        div "Jobs currently busy", class:"divider-text"
+        div "Jobs currently busy", class: "divider-text"
       end
     end
   end

@@ -9,7 +9,7 @@ module JoobqGui
 
     def html
       render "queues/traces.jinja", {
-        "name"            => name,
+        "name"             => name,
         "jobs_table_spark" => JobsTable.mount(name: name),
       }
     end

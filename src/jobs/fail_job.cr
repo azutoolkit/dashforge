@@ -7,6 +7,6 @@ struct FailJob
   end
 
   def perform
-    raise Exception.new
+    raise Exception.new if rand(10) % 2 == 0
   end
 end
