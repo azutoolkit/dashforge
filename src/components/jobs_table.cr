@@ -11,7 +11,7 @@ class JobsTable
   end
 
   private def jobs
-    joobq.list(@name, 0, 100)
+    joobq.list(@name, 0, 30)
   end
 
   def content

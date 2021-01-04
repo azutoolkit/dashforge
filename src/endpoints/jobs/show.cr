@@ -14,7 +14,7 @@ module JoobqGui
     end
 
     def job
-      JoobQ::QUEUES[job_request.queue][job_request.job_id]?
+      JoobQ::QUEUES[job_request.queue].get_job(job_request.job_id)
     end
   end
 end
