@@ -1,4 +1,4 @@
-require "./src/joobq_gui"
+require "./src/dashforge"
 
 iter = 10
 count = 10_000

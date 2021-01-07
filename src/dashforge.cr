@@ -1,7 +1,7 @@
 require "azu"
 require "joobq"
 
-module JoobqGui
+module DashForge
   include Azu
   VERSION = "0.1.0"
 

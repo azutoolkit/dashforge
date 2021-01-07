@@ -1,4 +1,4 @@
-module JoobqGui
+module DashForge
   class Dashboard::IndexPage
     include Response::Html
     getter joobq = JoobQ.statistics

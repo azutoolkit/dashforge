@@ -1,4 +1,4 @@
-module JoobqGui
+module DashForge
   class Static
     include HTTP::Handler
 

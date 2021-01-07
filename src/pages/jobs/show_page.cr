@@ -1,4 +1,4 @@
-module JoobqGui
+module DashForge
   struct Jobs::ShowPage
     include Response::Html
 

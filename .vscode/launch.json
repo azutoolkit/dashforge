@@ -10,7 +10,7 @@
       "args": [],
       "cwd": "${workspaceFolder}",
       "initCommands": [
-        "command script import /home/eperez/workspaces/joobq_gui/.vscode/crystal_formatters.py"
+        "command script import /home/eperez/workspaces/dashforge/.vscode/crystal_formatters.py"
       ]
     }
   ]

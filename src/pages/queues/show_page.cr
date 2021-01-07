@@ -1,4 +1,4 @@
-module JoobqGui
+module DashForge
   struct Queues::ShowPage
     include Response::Html
     getter joobq = JoobQ.statistics

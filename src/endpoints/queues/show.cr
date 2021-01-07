@@ -1,6 +1,6 @@
 require "azu/params"
 
-module JoobqGui
+module DashForge
   module Queues
     struct ShowRequest
       include Request

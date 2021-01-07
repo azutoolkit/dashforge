@@ -1,4 +1,4 @@
-module JoobqGui
+module DashForge
   struct EmptyRequest
     include Request
   end

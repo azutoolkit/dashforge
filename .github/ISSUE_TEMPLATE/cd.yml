@@ -1,0 +1,40 @@
+name: Crystal CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to DigitalOcean Registry
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+        run: doctl registry login
+    
+      - name: Build and Push Dashforge Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: |
+            registry.digitalocean.com/dashforge/dashforge:latest
+            registry.digitalocean.com/dashforge/dashforge:1.0.0
+      
+      - name: Build and Push Worker Image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile.worker
+          push: true
+          tags: |
+            registry.digitalocean.com/dashforge/worker:latest
+            registry.digitalocean.com/dashforge/worker:1.0.0
+
+      
