@@ -1,0 +1,79 @@
+{% extends "layout.jinja" %}
+
+{% block page_body %}
+<h4 class="mg-b-20">Scheduler</h4>  
+
+<div class="row">
+  <div class="col">
+    
+      <div class="card">
+        <div class="card-header d-sm-flex align-items-start justify-content-between">
+          <h6 class="lh-5 mg-b-0">Recurring Jobs</h6>
+          <a href="" class="tx-13 link-03">Mar 01 - Mar 20, 2019 <i class="icon ion-ios-arrow-down"></i></a>
+        </div><!-- card-header -->
+        <div class="card-body pd-y-15 pd-x-10">
+          <div class="table-responsive">
+            <table class="table table-borderless table-sm tx-13 tx-nowrap mg-b-0">
+              <thead>
+                <tr class="tx-10 tx-spacing-1 tx-color-03 tx-uppercase">
+                  <th class="wd-5p">&nbsp;</th>
+                  <th>Name</th>
+                  <th class="text-right">Interval</th>
+                  <th class="text-right">Class</th>
+                  <th class="text-right">Queue</th>
+                  <th class="text-right">Arguments</th>
+                  <th class="text-right">Status</th>
+                  <th class="text-right">Last Run</th>
+                  <th class="text-right">Next Run</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><i class="fab fa-chrome tx-primary op-6"></i></td>
+                  <td class="tx-medium">Google Chrome</td>
+                  <td class="text-right">13,410</td>
+                  <td class="text-right">40.95%</td>
+                  <td class="text-right">19.45%</td>
+                  <td class="text-right">40.95%</td>
+                  <td class="text-right">19.45%</td>
+                  <td class="text-right">19.45%</td>
+                  <td class="text-right">40.95%</td>
+                  <td class="text-right">19.45%</td>
+                  <td class="text-right">19.45%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- table-responsive -->
+        </div><!-- card-body -->
+      </div><!-- card -->
+  </div>
+</div>
+{% endblock %}
+
+{% block script_footer %}
+<script src="/assets/lib/jquery/jquery.min.js"></script>
+<script src="/assets/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/lib/feather-icons/feather.min.js"></script>
+<script src="/assets/lib/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.stack.js"></script>
+<script src="/assets/lib/jquery.flot/jquery.flot.resize.js"></script>
+<script src="/assets/lib/flot.curvedlines/curvedLines.js"></script>
+<script src="/assets/lib/peity/jquery.peity.min.js"></script>
+<script src="/assets/lib/chart.js/Chart.bundle.min.js"></script>
+<script src="/assets/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<script src="/assets/js/dashforge.js"></script>
+<script src="/assets/js/dashforge.sampledata.js"></script>
+<script src="/assets/js/dashboard-four.js"></script>
+
+<script src="/assets/lib/jquery-sparkline/jquery.sparkline.min.js"></script>
+
+<script src="/assets/js/chart.sparkline.js"></script>
+<!-- append theme customizer -->
+<script src="/assets/lib/js-cookie/js.cookie.js"></script>
+{% endblock  %}
+
+
+

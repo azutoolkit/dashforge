@@ -27,6 +27,10 @@ module DashForge
     ws "/live-view", Spark
     ws "/charts-data", ChartsChannel
 
+    routes :web, "/scheduler" do
+      get "/", Scheduler::Index
+    end
+
     routes :web, "/queues" do
       get "/:queue", Queues::Show
       get "/traces/:name", Queues::Traces

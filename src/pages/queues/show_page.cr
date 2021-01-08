@@ -1,6 +1,7 @@
 module DashForge
   struct Queues::ShowPage
     include Response::Html
+    getter template = "queues/index.jinja"
     getter joobq = JoobQ.statistics
     getter name : String
 
@@ -8,7 +9,7 @@ module DashForge
     end
 
     def html
-      render "queues/index.jinja", {
+      render template, {
         "queue"            => joobq.queue(name: name),
         "jobs_spark"       => JobsCounter.mount(name: name),
         "errors_spark"     => ErrorsCounter.mount(name: name),
