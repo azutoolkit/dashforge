@@ -6,7 +6,7 @@ on:
 
 jobs:
   Deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -26,11 +26,11 @@ jobs:
           dockerfile: Dockerfile
     
       - uses: mr-smithers-excellent/docker-build-push@v5
-        name: Build & push Dashforge image
+        name: Build & push Dashforge Worker image
         with:
           image: dashforge/worker
           tags: v1, latest
           registry: registry.digitalocean.com
-          dockerfile: Dockerfile
+          dockerfile: Dockerfile.worker
 
       

@@ -1,0 +1,7 @@
+FROM  tcardonne/github-runner:latest
+WORKDIR /opt/app
+ENV PATH /opt/app/bin:$PATH
+COPY . /opt/app
+RUN shards install
+RUN crystal build --release --static ./src/start.cr -o ./start
+CMD ["crystal", "spec"]
