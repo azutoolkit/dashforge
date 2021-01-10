@@ -1,4 +1,4 @@
-FROM crystallang/crystal:0.35.1-alpine
+FROM crystallang/crystal:latest-alpine
 WORKDIR /opt/app
 ENV PATH /opt/app/bin:$PATH
 COPY . /opt/app
@@ -10,4 +10,5 @@ FROM alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=0 /opt/app/start .
-CMD ["./start"]  
+COPY --from=0 /opt/app/public ./public
+COPY --from=0 /opt/app/src/templates ./src/templates
