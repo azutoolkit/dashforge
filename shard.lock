@@ -18,7 +18,7 @@ shards:
 
   joobq:
     git: https://github.com/eliasjpr/joobq.git
-    version: 0.2.0+git.commit.461a24e6f567f439eed44e01e4a43342a3ab2b97
+    version: 0.2.0+git.commit.b51e9c06920f104ba0de9bd224d241c009c322a9
 
   pool:
     git: https://github.com/ysbaddaden/pool.git

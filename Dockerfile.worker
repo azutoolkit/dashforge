@@ -1,8 +1,7 @@
 FROM crystallang/crystal:0.35.1-alpine
 WORKDIR /opt/app
-ENV PATH /opt/app/bin:$PATH
 COPY . /opt/app
-RUN shards update
+RUN shards install
 RUN crystal build --release --static ./worker.cr -o ./worker
 CMD ["crystal", "spec"]
 
