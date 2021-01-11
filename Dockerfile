@@ -1,4 +1,4 @@
-FROM crystallang/crystal:latest-alpine
+FROM crystallang/crystal:0.35.1-alpine
 WORKDIR /opt/app
 ENV PATH /opt/app/bin:$PATH
 COPY . /opt/app
