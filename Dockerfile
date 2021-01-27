@@ -1,4 +1,4 @@
-FROM crystallang/crystal:latest-alpine
+FROM crystallang/crystal:0.35.1-alpine-build
 WORKDIR /opt/app
 COPY . /opt/app
 RUN shards install
