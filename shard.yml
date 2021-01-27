@@ -15,4 +15,3 @@ dependencies:
     branch: refactor-request-params
   joobq:
     github: eliasjpr/joobq
-    branch: better-job-processing
