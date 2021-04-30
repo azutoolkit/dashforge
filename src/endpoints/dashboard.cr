@@ -1,10 +1,7 @@
 module DashForge
-  struct EmptyRequest
-    include Request
-  end
 
   class Dashboard::Index
-    include Endpoint(EmptyRequest, IndexPage)
+    include Endpoint(Request, IndexPage)
 
     def call : IndexPage
       IndexPage.new

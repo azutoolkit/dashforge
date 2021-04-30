@@ -1,12 +1,14 @@
 module DashForge
   struct Jobs::ShowPage
-    include Response::Html
+    include Response
+    include Templates::Renderable
+    
     getter template = "jobs/show.jinja"
 
     def initialize(@job : JoobQ::Job)
     end
 
-    def html
+    def render
       render template, {job_id: @job.jid.to_s}
     end
   end

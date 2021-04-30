@@ -1,5 +1,6 @@
 class ChartsChannel < Azu::Channel
   getter joobq = JoobQ.statistics
+  ws "/charts-data"
 
   def on_connect
     spawn do
@@ -28,5 +29,5 @@ class ChartsChannel < Azu::Channel
 
   def on_pong(message); end
 
-  def on_close(code, message); end
+  def on_close(code : HTTP::WebSocket::CloseCode | Int | ::Nil = nil, message = nil); end
 end

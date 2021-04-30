@@ -1,6 +1,6 @@
 name: dashforge
 version: 0.1.0
-crystal: 0.35.1
+crystal: ">=0.35.1"
 license: MIT
 authors:
   - Elias J. Perez <eliasjpr@gmail.com>
@@ -8,10 +8,9 @@ targets:
   dashforge:
     main: src/start.cr
   worker:
-    main: ./worker.cr
+    main: ./playground/worker.cr
 dependencies: 
   azu:
     github: eliasjpr/azu
-    branch: refactor-request-params
   joobq:
     github: eliasjpr/joobq

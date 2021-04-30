@@ -1,3 +1,4 @@
+require "./src/config/joobq.cr"
 require "./src/dashforge"
 
 iter = 10

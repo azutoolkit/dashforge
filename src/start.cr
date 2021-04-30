@@ -1,3 +1,0 @@
-require "./dashforge"
-
-DashForge.start

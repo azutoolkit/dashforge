@@ -4,46 +4,22 @@ require "joobq"
 module DashForge
   include Azu
   VERSION = "0.1.0"
-
   JoobQ::Statistics.create_series
-
+  
   configure do
-    templates.path = "src/templates"
-  end
+    templates.path = "public/templates"
 
-  Pipeline[:web] = [
-    Handler::Rescuer.new,
-    Handler::Logger.new,
-    Handler::Static.new("public"),
-  ]
+    router.ws "/live-view", Spark
+    router.get "/*", Handler::Static
 
-  Pipeline[:static] = [
-    Handler::Static.new("public"),
-  ]
-
-  router do
-    root :web, Dashboard::Index
-
-    ws "/live-view", Spark
-    ws "/charts-data", ChartsChannel
-
-    routes :web, "/scheduler" do
-      get "/", Scheduler::Index
-    end
-
-    routes :web, "/queues" do
-      get "/:queue", Queues::Show
-      get "/traces/:name", Queues::Traces
-      get "/:queue/jobs/:job_id", Jobs::Show
-    end
-
-    routes :static do
-      get "/*", Static
-    end
+    pipelines = [
+      Handler::Rescuer.new,
+      Handler::Logger.new,
+    ]
   end
 end
 
-require "./jobs/*"
+require "./jobs/**"
 require "./config/**"
 require "./pages/**"
 require "./endpoints/**"

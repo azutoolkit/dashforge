@@ -1,6 +1,8 @@
 module DashForge
   class Scheduler::Index
-    include Endpoint(EmptyRequest, IndexPage)
+    include Endpoint(Request, IndexPage)
+
+    get "/scheduled"
 
     def call : IndexPage
       IndexPage.new
