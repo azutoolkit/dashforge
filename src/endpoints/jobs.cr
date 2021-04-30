@@ -1,12 +1,12 @@
 module DashForge
-  struct Request
+  struct JobRequest
     include Request
     getter queue : String
     getter job_id : UUID
   end
 
-  module Jobs::Show
-    include Endpoint(Request, ShowPage)
+  class Jobs::Show
+    include Endpoint(JobRequest, ShowPage)
     get "/jobs/:job_id"
 
     def call : Jobs::ShowPage

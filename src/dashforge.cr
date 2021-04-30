@@ -25,3 +25,5 @@ require "./pages/**"
 require "./endpoints/**"
 require "./channels/**"
 require "./components/**"
+
+DashForge.start
