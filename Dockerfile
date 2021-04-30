@@ -2,7 +2,7 @@ FROM crystallang/crystal:0.35.1-alpine-build
 WORKDIR /opt/app
 COPY . /opt/app
 RUN shards install
-RUN crystal build --release --static ./src/start.cr -o ./start
+RUN crystal build --release --static ./src/dashforge.cr -o ./start
 CMD ["crystal", "spec"]
 
 FROM alpine:latest  
