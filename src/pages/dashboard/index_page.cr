@@ -2,8 +2,9 @@ module DashForge
   class Dashboard::IndexPage
     include Response
     include Templates::Renderable
+
     TEMPLATE = "dashboard/index.jinja"
-    
+
     getter joobq = JoobQ.statistics
 
     def render
@@ -28,10 +29,10 @@ module DashForge
     private def data
       joobq.range("processing", 1.days.ago.to_unix_ms, group: 5000, count: 100).not_nil!.map do |item|
         ts, value = item.as(Array)
-        
+
         {
-          t: Time.unix_ms(ts.as(Int64)).to_rfc3339, 
-          y: value.as(String).to_i
+          t: Time.unix_ms(ts.as(Int64)).to_rfc3339,
+          y: value.as(String).to_i,
         }
       end
     end

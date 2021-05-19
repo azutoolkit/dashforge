@@ -5,36 +5,50 @@ services:
     ports:
       - "6379:6379"
 
-  web:
-    build: 
-      context: .
-      dockerfile: Dockerfile
-    command: ./start
-    working_dir: /root/
-    environment:
-        CRYSTAL_ENV: development
-        HOST: 0.0.0.0
-        PORT: 4000
-        REDIS_HOST: redis
-        REDIS_PORT: 6379
-        REDIS_POOL_SIZE: 100
-        REDIS_TIMEOUT: 0.5
+  grafana:
+    image: grafana/grafana:6.5.0
     ports:
-        - "4000:4000"
-    depends_on:
-        - redis
+      - "3000:3000"
+
+  prometheus:
+    image: prom/prometheus
+    volumes: 
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  # web:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   command: ./start
+  #   container_name: web
+  #   working_dir: /root/
+  #   environment:
+  #       CRYSTAL_ENV: development
+  #       HOST: 0.0.0.0
+  #       PORT: 4000
+  #       REDIS_HOST: redis
+  #       REDIS_PORT: 6379
+  #       REDIS_POOL_SIZE: 100
+  #       REDIS_TIMEOUT: 0.5
+  #   ports:
+  #       - "4000:4000"
+  #   depends_on:
+  #       - redis
   
-  worker:
-    build:
-      context: .
-      dockerfile: Dockerfile.worker
-    command: ./worker
-    working_dir: /root/
-    environment:
-      REDIS_HOST: redis
-      REDIS_PORT: 6379
-      REDIS_POOL_SIZE: 100
-      REDIS_TIMEOUT: 0.5
-    depends_on:
-        - redis
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.worker
+  #   command: ./worker
+  #   container_name: worker
+  #   working_dir: /root/
+  #   environment:
+  #     REDIS_HOST: redis
+  #     REDIS_PORT: 6379
+  #     REDIS_POOL_SIZE: 100
+  #     REDIS_TIMEOUT: 0.5
+  #   depends_on:
+  #       - redis
   

@@ -1,6 +1,12 @@
 module Commons
   include Azu::Markup
 
+  def unmount
+  end
+
+  def on_event(name, data)
+  end
+
   def card_counter(name : String, title : String, unit : String, color : String, count : String, series : String)
     div class: "card" do
       div class: "card-header pd-t-20 pd-b-0 bd-b-0 d-flex justify-content-between" do

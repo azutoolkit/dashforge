@@ -2,7 +2,7 @@ module DashForge
   struct Queues::ShowPage
     include Response
     include Templates::Renderable
-    
+
     getter template = "queues/index.jinja"
     getter joobq = JoobQ.statistics
     getter name : String

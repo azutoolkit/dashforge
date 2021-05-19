@@ -10,6 +10,12 @@ class JobsTable
     every(1.second) { refresh }
   end
 
+  def unmount
+  end
+
+  def on_event(name, data)
+  end
+
   private def jobs
     joobq.list(@name, 0, 30)
   end

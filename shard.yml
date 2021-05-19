@@ -4,13 +4,18 @@ crystal: ">=0.35.1"
 license: MIT
 authors:
   - Elias J. Perez <eliasjpr@gmail.com>
+
 targets:
   dashforge:
-    main: src/dashforge.cr
-  worker:
-    main: ./playground/worker.cr
+    main: ./src/dashforge.cr
+    
 dependencies: 
   azu:
-    github: eliasjpr/azu
+    github: azutoolkit/azu
+  crometheus:
+    path: ../crometheus
   joobq:
-    github: eliasjpr/joobq
+    github: azutoolkit/joobq
+  clear:
+    github: anykeyh/clear
+    branch: master

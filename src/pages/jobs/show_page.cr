@@ -2,7 +2,7 @@ module DashForge
   struct Jobs::ShowPage
     include Response
     include Templates::Renderable
-    
+
     getter template = "jobs/show.jinja"
 
     def initialize(@job : JoobQ::Job)

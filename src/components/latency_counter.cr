@@ -6,6 +6,12 @@ class LatencyCounter
     every(1.seconds) { refresh }
   end
 
+  def unmount
+  end
+
+  def on_event(name, data)
+  end
+
   def content
     div class: "card" do
       div class: "card-header" do

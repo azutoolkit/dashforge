@@ -6,6 +6,12 @@ class ProcessingChart
     every(1.seconds) { refresh }
   end
 
+  def unmount
+  end
+
+  def on_event(name, data)
+  end
+
   def content
     div class: "card-footer pd-y-15 pd-x-20" do
       div class: "row row-sm" do
