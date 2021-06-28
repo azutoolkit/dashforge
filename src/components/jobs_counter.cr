@@ -8,7 +8,7 @@ class JobsCounter
   end
 
   def mount
-    every(5.seconds) { refresh }
+    every(3.seconds) { refresh }
   end
 
   def content

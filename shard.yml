@@ -12,8 +12,6 @@ targets:
 dependencies: 
   azu:
     github: azutoolkit/azu
-  crometheus:
-    path: ../crometheus
   joobq:
     github: azutoolkit/joobq
   clear:

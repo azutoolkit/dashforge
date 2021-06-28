@@ -10,5 +10,4 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=0 /opt/app/start .
 COPY --from=0 /opt/app/public ./public
-COPY --from=0 /opt/app/src/templates ./src/templates
 CMD ["./start"]

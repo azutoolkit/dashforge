@@ -1,4 +1,4 @@
-# dashforge
+# Dashforge
 
 TODO: Write a description here
 

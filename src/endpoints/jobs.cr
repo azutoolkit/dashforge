@@ -7,7 +7,7 @@ module DashForge
 
   class Jobs::Show
     include Endpoint(JobRequest, ShowPage)
-    get "/jobs/:job_id"
+    get "/queues/:queue/jobs/:job_id"
 
     def call : Jobs::ShowPage
       Jobs::ShowPage.new(job.not_nil!)

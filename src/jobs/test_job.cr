@@ -3,7 +3,11 @@ struct TestJob
 
   property x : Int32
   @retries = 3
-  @queue = "Test"
+  @queue = "queue:Test"
+
+  def self.perform(x : Int32)
+    new(x).perform
+  end
 
   def initialize(@x : Int32)
   end

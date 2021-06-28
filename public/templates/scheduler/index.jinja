@@ -1,46 +1,39 @@
 {% extends "layout.jinja" %}
 
 {% block page_body %}
-<h4 class="mg-b-20">Scheduler</h4>  
-
+<h4 class="mg-b-20">Scheduler</h4>
 <div class="row">
   <div class="col">
       <div class="card">
         <div class="card-header d-sm-flex align-items-start justify-content-between">
           <h6 class="lh-5 mg-b-0">Recurring Jobs</h6>
-          <a href="" class="tx-13 link-03">Mar 01 - Mar 20, 2019 <i class="icon ion-ios-arrow-down"></i></a>
         </div><!-- card-header -->
         <div class="card-body pd-y-15 pd-x-10">
           <div class="table-responsive">
             <table class="table table-borderless table-sm tx-13 tx-nowrap mg-b-0">
               <thead>
                 <tr class="tx-10 tx-spacing-1 tx-color-03 tx-uppercase">
-                  <th class="wd-5p">&nbsp;</th>
-                  <th>Name</th>
-                  <th class="text-right">Interval</th>
-                  <th class="text-right">Class</th>
+                  <th class="text-right">Job</th>
                   <th class="text-right">Queue</th>
-                  <th class="text-right">Arguments</th>
-                  <th class="text-right">Status</th>
-                  <th class="text-right">Last Run</th>
+                  <th class="text-right">Interval</th>
+                  <th class="text-right">Job Expires</th>
+                  <th class="text-right">Job Retries</th>
                   <th class="text-right">Next Run</th>
-                  <th class="text-right">Actions</th>
+                  <th class="text-right">Last Run</th>
                 </tr>
               </thead>
               <tbody>
+                {%- for s in jobs%}
                 <tr>
-                  <td><i class="fab fa-chrome tx-primary op-6"></i></td>
-                  <td class="tx-medium">Google Chrome</td>
-                  <td class="text-right">13,410</td>
-                  <td class="text-right">40.95%</td>
-                  <td class="text-right">19.45%</td>
-                  <td class="text-right">40.95%</td>
-                  <td class="text-right">19.45%</td>
-                  <td class="text-right">19.45%</td>
-                  <td class="text-right">40.95%</td>
-                  <td class="text-right">19.45%</td>
-                  <td class="text-right">19.45%</td>
+                  <td class="tx-medium">{{s["class_name"]}}</td>
+                  <td class="text-right">{{s["queue"]}}</td>
+                  <td class="text-right">{{s["interval"]}}</td>
+                  <td class="text-right">{{s["expires"]}}</td>
+                  <td class="text-right">{{s["retries"]}}</td>
+                  <td class="text-right">{{s["next_run"]}}</td>
+                  <td class="text-right">{{s["last_run"]}}</td>
                 </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div><!-- table-responsive -->
