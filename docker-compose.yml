@@ -20,6 +20,21 @@ services:
     depends_on:
       - redis
 
+  simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile.simulator
+    command: ./simulator
+    container_name: simulator
+    working_dir: /root/
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_POOL_SIZE: 100
+      REDIS_TIMEOUT: 0.5
+    depends_on:
+      - redis
+
   web:
     build:
       context: .
@@ -40,3 +55,4 @@ services:
     depends_on:
       - redis
       - worker
+      - simulator
