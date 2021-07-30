@@ -1,5 +1,5 @@
 require "azu"
-require "joobq"
+require "./config/**"
 
 module DashForge
   include Azu
@@ -15,7 +15,6 @@ end
 
 require "./components/**"
 require "./jobs/**"
-require "./config/**"
 require "./pages/**"
 require "./endpoints/**"
 require "./channels/**"

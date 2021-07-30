@@ -12,13 +12,13 @@ const sparkRenderEvent = new CustomEvent('spark-render');
 
 live_view.addEventListener('open', (event) => {
   // Hydrate client-side rendering
-  document.querySelectorAll('[spark-view]')
+  document.querySelectorAll('[data-spark-view]')
     .forEach((view) => {
       var node = html(view.innerHTML)[0];
       hydrate(node, view.children[0]);
 
       live_view.send(JSON.stringify({
-        subscribe: view.getAttribute('spark-view'),
+        subscribe: view.getAttribute('data-spark-view'),
       }))
     });
 });
@@ -28,7 +28,7 @@ live_view.addEventListener('message', (event) => {
   var data = event.data;
   var { id, content } = JSON.parse(data);
 
-  document.querySelectorAll(`[spark-view="${id}"]`)
+  document.querySelectorAll(`[data-spark-view="${id}"]`)
     .forEach((view) => {
       var div = window.$('<div>' + content + '</div>');
       view.children[0].innerHTML = div[0].innerHTML
@@ -54,8 +54,8 @@ live_view.addEventListener('close', (event) => {
     if (typeof event_name === 'string') {
       var channel = event
         .target
-        .closest('[spark-view]')
-        .getAttribute('spark-view')
+        .closest('[data-spark-view]')
+        .getAttribute('data-spark-view')
 
       var data = {};
       switch (element.type) {

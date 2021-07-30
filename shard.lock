@@ -2,11 +2,11 @@ version: 2.0
 shards:
   admiral:
     git: https://github.com/jwaldrip/admiral.cr.git
-    version: 1.11.4
+    version: 1.12.1
 
   azu:
     git: https://github.com/azutoolkit/azu.git
-    version: 0.1.5
+    version: 0.1.8
 
   backtracer:
     git: https://github.com/sija/backtracer.cr.git
@@ -18,7 +18,7 @@ shards:
 
   crinja:
     git: https://github.com/straight-shoota/crinja.git
-    version: 0.7.0
+    version: 0.8.0
 
   cron_parser:
     git: https://github.com/kostya/cron_parser.git
@@ -42,11 +42,11 @@ shards:
 
   joobq:
     git: https://github.com/azutoolkit/joobq.git
-    version: 0.2.1
+    version: 0.3.0
 
   pg:
     git: https://github.com/will/crystal-pg.git
-    version: 0.23.2
+    version: 0.24.0
 
   pool:
     git: https://github.com/ysbaddaden/pool.git

@@ -2,32 +2,27 @@ require "joobq"
 require "../src/jobs/**"
 require "../src/config/**"
 
-iter = 10
-count = 10_000
-total = iter * count
+iterator = ->{ rand(10) * 1000 }
 
-spawn do
-  total.times do |i|
-    EmailJob.perform
+loop do
+  spawn do
+    iterator.call.times do |i|
+      EmailJob.perform
+    end
   end
 
-  sleep rand(10)
-end
-
-spawn do
-  total.times do |i|
-    FailJob.perform
+  spawn do
+    iterator.call.times do |i|
+      FailJob.perform
+    end
   end
 
-  sleep rand(10)
-end
-
-spawn do
-  total.times do |i|
-    TestJob.perform(x: i)
+  spawn do
+    iterator.call.times do |i|
+      TestJob.perform(x: i)
+    end
   end
 
-  sleep rand(10)
+  sleep rand(3)
 end
-
 sleep

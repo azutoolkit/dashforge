@@ -14,7 +14,7 @@ module DashForge
     end
 
     def job
-      JoobQ::QUEUES[job_request.queue].get_job(job_request.job_id)
+      JoobQ.queues[job_request.queue].get_job(job_request.job_id)
     end
   end
 end
