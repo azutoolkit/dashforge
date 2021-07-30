@@ -33,4 +33,12 @@ jobs:
           registry: registry.digitalocean.com
           dockerfile: Dockerfile.worker
 
+      - uses: mr-smithers-excellent/docker-build-push@v5
+        name: Build & push Dashforge Worker image
+        with:
+          image: dashforge/simulator
+          tags: v1, latest
+          registry: registry.digitalocean.com
+          dockerfile: Dockerfile.simulator
+
       
