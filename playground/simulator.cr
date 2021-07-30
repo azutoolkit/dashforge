@@ -2,7 +2,7 @@ require "joobq"
 require "../src/jobs/**"
 require "../src/config/**"
 
-iterator = ->{ rand(10) * 1000 }
+iterator = ->{ rand(10) * 100 }
 
 loop do
   spawn do
@@ -23,6 +23,6 @@ loop do
     end
   end
 
-  sleep rand(3)
+  sleep rand(100)
 end
 sleep

@@ -3,7 +3,6 @@ require "./config/**"
 
 module DashForge
   include Azu
-  VERSION = "0.1.0"
   JoobQ::Statistics.create_series
 
   configure do |c|
