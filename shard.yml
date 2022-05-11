@@ -14,6 +14,3 @@ dependencies:
     github: azutoolkit/azu
   joobq:
     github: azutoolkit/joobq
-  clear:
-    github: anykeyh/clear
-    branch: master
