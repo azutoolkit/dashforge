@@ -7,7 +7,7 @@ class JobsTable
   end
 
   def mount
-    every(1.second) { refresh }
+    every(10.second) { refresh }
   end
 
   def unmount

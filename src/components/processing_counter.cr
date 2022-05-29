@@ -3,7 +3,7 @@ class ProcessingCounter
   getter joobq = JoobQ.statistics
 
   def mount
-    every(1.seconds) { refresh }
+    every(10.seconds) { refresh }
   end
 
   def unmount

@@ -8,7 +8,7 @@ class DurationCounter
   end
 
   def mount
-    every(3.seconds) { refresh }
+    every(10.seconds) { refresh }
   end
 
   def content

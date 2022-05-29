@@ -1,9 +1,9 @@
 require "joobq"
 
 JoobQ.configure do
-  queue "queue:Email", 1, EmailJob
-  queue "queue:Fail", 1, FailJob
-  queue "queue:Test", 1, TestJob
+  queue "queue:Email", ENV["EMAIL_QUEUE_WORKERS"].not_nil!.to_i, EmailJob
+  queue "queue:Fail", ENV["FAIL_QUEUE_WORKERS"].not_nil!.to_i, FailJob
+  queue "queue:Test", ENV["TEST_QUEUE_WORKERS"].not_nil!.to_i, TestJob
 
   scheduler do
     cron "5 4 * * *" { TestJob.perform(1) }
