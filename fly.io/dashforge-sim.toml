@@ -1,0 +1,41 @@
+# fly.toml file generated for dashlane on 2022-05-28T14:49:57-04:00
+
+app = "dashforge-sim"
+
+kill_signal = "SIGINT"
+kill_timeout = 5
+processes = []
+
+[build]
+  dockerfile = "Dockerfile.simulator"
+
+[env]
+CRYSTAL_ENV="development"
+PORT=8080
+REDIS_HOST="dashforge-redis.internal"
+REDIS_PORT=6379
+REDIS_POOL_SIZE=100
+REDIS_TIMEOUT=0.5
+EMAIL_QUEUE_WORKERS=5
+FAIL_QUEUE_WORKERS=1
+TEST_QUEUE_WORKERS=3
+
+[experimental]
+  allowed_public_ports = []
+  auto_rollback = true
+
+[[services]]
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"
